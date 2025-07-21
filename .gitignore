@@ -1,0 +1,9 @@
+.env
+__pycache__/
+.venv
+.python-version
+.DS_Store
+*.txt
+*.html
+.ruff_cache
+cache/*
