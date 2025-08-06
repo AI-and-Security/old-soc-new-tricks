@@ -4,6 +4,5 @@ __pycache__/
 .python-version
 .DS_Store
 *.txt
-*.html
 .ruff_cache
 cache/*
