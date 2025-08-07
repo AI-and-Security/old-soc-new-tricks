@@ -1,3 +1,13 @@
+## 🔗 Google Colab Notebooks
+
+| Notebook | Description | Colab |
+|----------|-------------|-------|
+| `test` | Test notebook | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/test.ipynb) |
+| `Module1` | AI != GenAI | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/ai_python.ipynb) |
+| `Module2` | Old School is Cool! | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/eda.ipynb) |
+| `Module3` | Disastrous GenAI | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/eda_langchain.ipynb) |
+
+
 ## Environment Setup
 This repository consists of collection of Jupyter notebooks and Python files that will walk you through different applications of data/AI skills in security
 
