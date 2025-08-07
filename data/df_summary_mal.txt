@@ -1,0 +1,160 @@
+<style type="text/css">
+#T_c6067 thead>tr>th {
+  text-align: left;
+}
+#T_c6067_row0_col0, #T_c6067_row1_col0, #T_c6067_row2_col0, #T_c6067_row3_col0, #T_c6067_row4_col0, #T_c6067_row5_col0, #T_c6067_row6_col0, #T_c6067_row7_col0, #T_c6067_row8_col0, #T_c6067_row9_col0, #T_c6067_row10_col0, #T_c6067_row11_col0 {
+  text-align: left;
+  font-size: 12px;
+  vertical-align: middle;
+  width: 5%;
+  max-width: 50px;
+  min-width: 20px;
+}
+#T_c6067_row0_col1, #T_c6067_row1_col1, #T_c6067_row2_col1, #T_c6067_row3_col1, #T_c6067_row4_col1, #T_c6067_row5_col1, #T_c6067_row6_col1, #T_c6067_row7_col1, #T_c6067_row8_col1, #T_c6067_row9_col1, #T_c6067_row10_col1, #T_c6067_row11_col1 {
+  text-align: left;
+  font-size: 12px;
+  vertical-align: middle;
+  width: 15%;
+  max-width: 200px;
+  min-width: 100px;
+  word-break: break-word;
+}
+#T_c6067_row0_col2, #T_c6067_row1_col2, #T_c6067_row2_col2, #T_c6067_row3_col2, #T_c6067_row4_col2, #T_c6067_row5_col2, #T_c6067_row6_col2, #T_c6067_row7_col2, #T_c6067_row8_col2, #T_c6067_row9_col2, #T_c6067_row10_col2, #T_c6067_row11_col2 {
+  text-align: left;
+  font-size: 12px;
+  vertical-align: middle;
+  width: 30%;
+  min-width: 100px;
+}
+#T_c6067_row0_col3, #T_c6067_row1_col3, #T_c6067_row2_col3, #T_c6067_row3_col3, #T_c6067_row4_col3, #T_c6067_row5_col3, #T_c6067_row6_col3, #T_c6067_row7_col3, #T_c6067_row8_col3, #T_c6067_row9_col3, #T_c6067_row10_col3, #T_c6067_row11_col3 {
+  text-align: left;
+  font-size: 12px;
+  vertical-align: middle;
+  width: 25%;
+  min-width: 100px;
+}
+#T_c6067_row0_col4, #T_c6067_row1_col4, #T_c6067_row2_col4, #T_c6067_row3_col4, #T_c6067_row4_col4, #T_c6067_row5_col4, #T_c6067_row6_col4, #T_c6067_row7_col4, #T_c6067_row8_col4, #T_c6067_row9_col4, #T_c6067_row10_col4, #T_c6067_row11_col4 {
+  text-align: left;
+  font-size: 12px;
+  vertical-align: middle;
+  width: 20%;
+  min-width: 150px;
+}
+#T_c6067_row0_col5, #T_c6067_row1_col5, #T_c6067_row2_col5, #T_c6067_row3_col5, #T_c6067_row4_col5, #T_c6067_row5_col5, #T_c6067_row6_col5, #T_c6067_row7_col5, #T_c6067_row8_col5, #T_c6067_row9_col5, #T_c6067_row10_col5, #T_c6067_row11_col5 {
+  text-align: left;
+  font-size: 12px;
+  vertical-align: middle;
+  width: 10%;
+}
+</style>
+<table id="T_c6067">
+  <caption><strong>Data Frame Summary</strong><br>malicious_df<br>Dimensions: 154,090 x 12<br>Duplicates: 0</caption>
+  <thead>
+    <tr>
+      <th id="T_c6067_level0_col0" class="col_heading level0 col0" >No</th>
+      <th id="T_c6067_level0_col1" class="col_heading level0 col1" >Variable</th>
+      <th id="T_c6067_level0_col2" class="col_heading level0 col2" >Stats / Values</th>
+      <th id="T_c6067_level0_col3" class="col_heading level0 col3" >Freqs / (% of Valid)</th>
+      <th id="T_c6067_level0_col4" class="col_heading level0 col4" >Graph</th>
+      <th id="T_c6067_level0_col5" class="col_heading level0 col5" >Missing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_c6067_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_c6067_row0_col1" class="data row0 col1" ><strong>Timestamp</strong><br>[float64]</td>
+      <td id="T_c6067_row0_col2" class="data row0 col2" >Mean (sd) : 1540450214.8 (2080.2)<br>min < med < max:<br>1540446382.9 < 1540450432.6 < 1540453519.8<br>IQR (CV) : 3618.0 (740512.8)</td>
+      <td id="T_c6067_row0_col3" class="data row0 col3" >154,090 distinct values</td>
+      <td id="T_c6067_row0_col4" class="data row0 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKoAAABGCAYAAABc8A97AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAkxJREFUeJzt3b9u2mAUhvFjtyATkD/xp3ABHbMhsXABHXuxvYQODJ0ZunRiQ0KWEW6sGtsd2qpTEmwntV/3+a3o8Hl4xKeEI+GVZWlA1/ltPwBwi7dtPwD6w/O8kZkNa47/KMvy4bEXCbVnGsbim1lRczaYzWYfnHPjOsPn8znyPO/TY7ESao94njeaz+cfwzCcVp3N83yQJMn7yWTyzff9rOp8lmWBmd1vNpsvi8XiXGU2juNgt9tNT6fT0MwI9T8wDMNwut1uH5xzaZXBw+Ew3e/379br9dfVahVVPfj3/F0QBNlyufxedd7MRk+9SKgd0/DqDouiGDjnoqqxRFE0MjMbj8dpndD+zL8WQu2QJle32a/rN8/z+zRNP5tZnU+1ziLUbql9dZv9vX6v1+ub13i4NhFqBznnOnn9tol/+EMCoUICoUICoUICoUICoUICoUICoUICoUICoULCs1+htriI23Re8eywKIpBzTN77clQ21zEbTKvenaft5+aeu4Tte1F3Frzqmf3efupqZu2p+ps87zUIm6dedWz+7z91BR/TEECoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoUICoULCTb8uHcdxUPWNL5dLYGaWJElwPB7v/uW86tmqz910/pa+fgIzj0bVAseHGwAAAABJRU5ErkJggg=="></img></td>
+      <td id="T_c6067_row0_col5" class="data row0 col5" >0<br>(0.0%)</td>
+    </tr>
+    <tr>
+      <td id="T_c6067_row1_col0" class="data row1 col0" >2</td>
+      <td id="T_c6067_row1_col1" class="data row1 col1" ><strong>Source Port</strong><br>[float64]</td>
+      <td id="T_c6067_row1_col2" class="data row1 col2" >Mean (sd) : 31461.6 (18801.8)<br>min < med < max:<br>0.0 < 32761.0 < 65267.0<br>IQR (CV) : 28964.0 (1.7)</td>
+      <td id="T_c6067_row1_col3" class="data row1 col3" >22,952 distinct values</td>
+      <td id="T_c6067_row1_col4" class="data row1 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKoAAABGCAYAAABc8A97AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAp1JREFUeJzt3L2O2kAYRuFvYEHmR7YQCnQ0KSOloOQicrG5hBRcAUWaVHRICIFw1sIY0iRSIq0W22Ov93XO08/OSD5ml/F63P1+N+C96zS9ACCPp6YX0EbOuYGZ9UsOv9zv9+cq19MGhFox59xgOp1+CcNwUmb86XQ6OOe+Euu/CLV6/TAMJ6vV6jmKoqTIwOPxGKzX68l+v++bGaH+hVBrEkVRMpvNfpYYOqh8MS3AlylIIFRIIFRIIFRIIFRIIFRIIFRIIFRIIFRIIFRIIFRIIFRIIFRIIFRIIFRIIFRIePiP07z/o6Wt1+vVUHn/R0ubr9ejT1Te/9HS2uuV650p3v/R0sbrxZcpSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSMh1mp8izwNtzd7xobb/o1aG6nugrVlzh9pmWdYzs9A5V2Z4eLvdeg3NbVbjzd3KUM3jQFuz5g61jeO4l6bp58Vi0e12u4XXnaZpkGXZpyRJvplZofNRfec2q/fmbmuoZuZ1oK1ZA4faXi6XpyAIhsvlMpnP54ei47fb7WSz2Qyv12v3reeu++ZudaiqRqNRqRvscDh431xl5/6ttpubb/2QQKiQQKiQwN+oqIzn9tarW1uEikr4bm892toiVFTCZ3srz9ZWraFW8KSjY2a3EuO8ntCYea3de25lHttbr25t1Raq76+CLMt6cRx/HI/HPzqdTlpkrM8TGjO/tfvOjZfVFmpFT1k+LJfL70XH+zyhMfNbu+/ceFmuUI/HY1D0B5/P58JjqhbHcbDb7YZFx1Wx9jJz/5nXd91qc+fp6xeVq4p5WAui0AAAAABJRU5ErkJggg=="></img></td>
+      <td id="T_c6067_row1_col5" class="data row1 col5" >0<br>(0.0%)</td>
+    </tr>
+    <tr>
+      <td id="T_c6067_row2_col0" class="data row2 col0" >3</td>
+      <td id="T_c6067_row2_col1" class="data row2 col1" ><strong>Destination Port</strong><br>[float64]</td>
+      <td id="T_c6067_row2_col2" class="data row2 col2" >Mean (sd) : 6758.4 (7691.4)<br>min < med < max:<br>23.0 < 8280.0 < 65267.0<br>IQR (CV) : 10187.0 (0.9)</td>
+      <td id="T_c6067_row2_col3" class="data row2 col3" >3,691 distinct values</td>
+      <td id="T_c6067_row2_col4" class="data row2 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKoAAABGCAYAAABc8A97AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAl1JREFUeJzt2DFuGkEYhuFvAkaLlcxoQaLkApFyAPq0PqzbdCk4gW9Ag5AQXoTNxrBsDhAlNrsg+Mj79P/4L14t4wl1XQu4dp8uvQDwEd1zHh5C6EvqtTjira7r7an2ga+zhRpC6A+Hw4cYY970jPV6vQohPBIrzvlF7cUY88lksk0plccOF0WRTafTfLlc9iQR6n/urD/9kpRSKkej0WvD8f5Jl4Gtd0Ntcc+Mh8PhrsEc8Id/htrmnrnb7bKqqr6WZflTUtMvKiDp/S9q43vmbDbLn56e7vf7fafFfoCkD95Rm9wzV6sV90ucDA/+sECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosECosNC99ALnEkLoS+q1OOKtruvtqfZBOzcZagihPxwOH2KMedMz1uv1KoTwSKzX4SZDldSLMeaTyWSbUiqPHS6KIptOp/lyuexJItQrcKuhSpJSSuVoNHptON4/6TJohX+mYIFQYYFQYeGm76htVFV1JymGEJqMX+xpq+Wz3NU+yX0o1KIosmMP3mw2mSS9vLxki8Xi/tj5oiiyqqq6ahZLPBwO3SZ7S9J8Pv+y2+2+jcfjTqfTOfrV4Pn5eRNC+CHp6NmWssFg8D2l9LnJ8AX3lqRfdV3/9e/+Bq+dmDeeP15hAAAAAElFTkSuQmCC"></img></td>
+      <td id="T_c6067_row2_col5" class="data row2 col5" >0<br>(0.0%)</td>
+    </tr>
+    <tr>
+      <td id="T_c6067_row3_col0" class="data row3 col0" >4</td>
+      <td id="T_c6067_row3_col1" class="data row3 col1" ><strong>Payload</strong><br>[object]</td>
+      <td id="T_c6067_row3_col2" class="data row3 col2" >1. Raw<br>2. Padding<br>3. <br>4. DNS Qry "b'xmpp.samsungsmartca<br>5. DNS Ans <br>6. DNS Qry "b'xmpp.samsungsmartca<br>7. DNS Qry "b'10024backup.broadli<br>8. DNS Qry "b'10024main.broadlink<br>9. DNS Qry "b'www.baidu.com.'" <br>10. DNS Qry "b'authentication.eye4<br>11. other</td>
+      <td id="T_c6067_row3_col3" class="data row3 col3" >64,960 (42.2%)<br>28,136 (18.3%)<br>22,577 (14.7%)<br>7,099 (4.6%)<br>4,561 (3.0%)<br>3,550 (2.3%)<br>2,216 (1.4%)<br>2,174 (1.4%)<br>1,896 (1.2%)<br>1,543 (1.0%)<br>15,378 (10.0%)</td>
+      <td id="T_c6067_row3_col4" class="data row3 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJsAAAD+CAYAAAAtWHdlAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAABGVJREFUeJzt3VFKJFcAhtGrNGZ86aYRXIYLcBFZbBbRC3AfItbDaObFPBjEGXWMpusrsM95b6iBjytV3D85enh4GFA4XvoBOBxiIyM2MmIjIzYyYiMjNjJiIyM2MkdjjNMxxsnSD7KwHw8PD3dLP8RXtzo7O/tzvV5vl36QJU3TdHN0dPSX4Oa1Wq/X28vLy7vNZnO/9MMs4fb29ttut9teX1+fjDHENqPVGGNsNpv78/Pz70s/zIJOl36AQ+AFgYzYyIiNjNjIiI2M2MiIjYzYyIiNjNjIiI2M2MiIjYzYyKzGeLzTtfSDLOWQ/+211TRNN7vdbjsO+E7XNE03Y4wfSz/HV2eD8MgGIXDkP5lFZYmTzSlyoPJ1lSXT4UrXVZZMh22JddXBvvUeOh91yYiNjNjIiI2M2MiIjYzYyIiNjNjIiI2M2MiIjYzYyKSDF+OSw5YPXoxLDpdr4WQMXsjMfbI5xXgy6+DFuIXnZhu8GLfwq7kHL8YtPPFRl4zYyIiNjNjIiI2M2MiIjYzYyIiNjNjIiI2M2MiIjcxsgxfjFn416+DFuIXnXAsnY/BCxgsCmff+jPozyN78dl1lHcU+vbmuso5i395bV1lHsTdeEMiIjYzYyIiNjNjIiI2M2MiIjYzYyIiNjNjIiI2M2Mi8ua6yjmLffruuso5in1wLJ2NdReatk82Jxt69OngxdGEOLwYvhi7M5a3Bi6ELe+ejLhmxkREbGbGRERsZsZERGxmxkREbGbGRERsZsZERG5kXgxdDF+by6uDF0IU5uBZOxuCFzGsnm1ONWbwYvBi7MJefBi/GLszptcGLsQuz8FGXjNjIiI2M2MiIjYzYyIiNjNjIiI2M2MiIjYzYyIiNjNjI/LSusqxiTi/WVZZVzMUGgYx1FZnnJ5sTjVk9rausqpjb8Xq93l5cXIx/53xv/a8g4X87HmOM09PTv5d+EL4+H3XJiI2M2MiIjYzYyIiNjNjIiI2M2MiIjYzYyIiNjNjIHI8xxt3d3R9LPwhf3/E0TTdXV1eGLszOtXAyBi9knGxkDF7IGLyQMXgh46MuGbGRERsZsZERGxmxkREbGbGRERsZsZERGxmxkREbGYMXMgYvZFwLJ2PwQsYLAhl/RslYV5GxriJjXUXGCwIZsZERGxmxkREbGbGRERsZsZERGxmxkREbGbGRERsZ6yoy1lVkXAsnY11FxslGxuCFjMELGYMXMj7qkhEbGbGRERsZsZERGxmxkREbGbGRERsZsZERGxmxkTF4IWPwQsa1cDIGL2Sen2yf4TTkP3savHzmx0YyfMRqvV5vLy8v7zabzf1Hfnh7e/ttt9ttr6+vT8YYYuNdqzHG2Gw29+fn598/8fvTPT8PX5iPumTERkZsZMRGRmxkxEZGbGTERkZsZMRGRmxkxEZGbGRWYzxeF/roDz/zGw7bapqmm91utx2fuC5kJMNHuBZOxuCFjBcEMmIjIzYyYiMjNjJiIyM2MmIjIzYy/wBYZxJ2TEMMZAAAAABJRU5ErkJggg=="></img></td>
+      <td id="T_c6067_row3_col5" class="data row3 col5" >0<br>(0.0%)</td>
+    </tr>
+    <tr>
+      <td id="T_c6067_row4_col0" class="data row4 col0" >5</td>
+      <td id="T_c6067_row4_col1" class="data row4 col1" ><strong>Packet Length</strong><br>[int64]</td>
+      <td id="T_c6067_row4_col2" class="data row4 col2" >Mean (sd) : 45.3 (17.6)<br>min < med < max:<br>20.0 < 48.0 < 166.0<br>IQR (CV) : 8.0 (2.6)</td>
+      <td id="T_c6067_row4_col3" class="data row4 col3" >84 distinct values</td>
+      <td id="T_c6067_row4_col4" class="data row4 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKoAAABGCAYAAABc8A97AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAmlJREFUeJzt3buO2kAYhuF/wkEGEluABB03ECkFJX3aXOxeQgoXqbkDGoSwkBEEhDFOs1slWvBp4SPv04+Z4sUMZtC4LMsMeHSf7j0B4BbNOi/unOuYWbvEJU5Zlh2qmg901Raqc64zHA5/+L7fL3qN7Xa7cc69ECvqvKO2fd/vz2azQxAEx7yD4zj2wjDsR1HUNjNC/c/V+tFvZhYEwXE0Gv0uOLxT6WQgiy9TkECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokECokHD1LNQSR5n7l8ulVWAc8Jd3Qy1zlHmSJF6apl+Px+NPMyt6aC9gZtfvqIWPMl8sFv35fN49n8+NEvMDzOzGY9CLHGW+2Ww4whyV4csUJBAqJBAqJBAqJBAqJBAqJBAqJBAqJNz0wP9e0jRtmZnvnCsy/JRl2aHiKeFOHjbU/X7fSpLk22QyaTQajVw/35qZbbfbjXPuhVifw8OGejqdmp7ndafT6XE8Hm/yjI3j2AvDsB9FUdvMCPUJPGyob3q9Xu59Bq9K7TUosb3RjGVH5R4+1Hsos73RjGVHHQj13wpvb2TZUQ9CfUeR7Y2v2OJYsacNteSjLf5GU0Cd6/qbQo3j2Mv7qrvdzjMz2+/33mq16n7k+OVy+aXMo623v9Gs1+tfecfGceyladq04m8SVd5gMPgeBMHnIoOvrev/AB3OxDlJ3ZH/AAAAAElFTkSuQmCC"></img></td>
+      <td id="T_c6067_row4_col5" class="data row4 col5" >0<br>(0.0%)</td>
+    </tr>
+    <tr>
+      <td id="T_c6067_row5_col0" class="data row5 col0" >6</td>
+      <td id="T_c6067_row5_col1" class="data row5 col1" ><strong>Protocol</strong><br>[float64]</td>
+      <td id="T_c6067_row5_col2" class="data row5 col2" >1. 17.0<br>2. 6.0</td>
+      <td id="T_c6067_row5_col3" class="data row5 col3" >102,938 (66.8%)<br>51,152 (33.2%)</td>
+      <td id="T_c6067_row5_col4" class="data row5 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJsAAAAuCAYAAAA/ZmtKAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAAATtJREFUeJzt2zFqw0AURdE/QZi4mUEItBgvIovNImY3QmiK2LhRilQhTifeOC/3rOAbXwQ2emnf9wAUUkScI+LU+xD86r7v+7X3EUcYpml6yzmPvQ/BY621NaX07hDckHMeL5fLtZRy630Mvtu27bXWOi7LcoqIvx9bREQp5TbP80fvY/DQufcBR3npfQD+D2KDDLFBhtggQ2yQITbIEBtkiA0yxAYZYoMMsUGG2CBDbJAhNsgQG2SGiK+X9Hofgp/cvpehtbbWWscweknPSWttjYh77zuOwODl+dkMXhJTPqi4PdlsngKOrKZ8TrM3RzZTPrfZmyO3KR+/qJ8Yf+pChtggQ2yQITbIEBtkiA0yxAYZYoMMsUGG2CBDbJAhNsgQG2SIDTLEBhmbKZ/DZ3BnNeVzmr05YvACmU8KW2rfEFTOWQAAAABJRU5ErkJggg=="></img></td>
+      <td id="T_c6067_row5_col5" class="data row5 col5" >0<br>(0.0%)</td>
+    </tr>
+    <tr>
+      <td id="T_c6067_row6_col0" class="data row6 col0" >7</td>
+      <td id="T_c6067_row6_col1" class="data row6 col1" ><strong>src_ip_total_bytes</strong><br>[int64]</td>
+      <td id="T_c6067_row6_col2" class="data row6 col2" >Mean (sd) : 648043.8 (592893.0)<br>min < med < max:<br>26.0 < 442714.5 < 2207294.0<br>IQR (CV) : 888280.2 (1.1)</td>
+      <td id="T_c6067_row6_col3" class="data row6 col3" >145,355 distinct values</td>
+      <td id="T_c6067_row6_col4" class="data row6 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKoAAABGCAYAAABc8A97AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAAApZJREFUeJzt3L2O2kAUQOE7sCCzEFuIBDo36VO4pMkb5GHTpocXoEiTigYhITDCWQRynCZEG2XFz8zCcq/OV+8YisN6PB7bVVUlwL2rvfUXAM7xcOoPnHMtEWl6Hn9XVdWT51jgr6OhOudavV7vSxzHXZ+Dr9frpXPuK7Ei1Kn/qM04jrvD4fApSZLtJQfO8zwajUbdxWLRFBFCRZCTp34RkSRJtv1+/6fH8VseY4D/cDEFFQgVKhAqVCBUqECoUIFQoQKhQgVChQqEChUIFSoQKlQgVKhAqFCBUKECoUIFQoUKhAoVCBUqECpUIFSoQKhQgVChAqFCBUKFCme9gMJXWZYNEYmdc76H4N1VEJErhloURWO/339K07Rer9cveh3QAe+uwsHVQt3tdg9RFD1mWbYdDAbLS8fz7io8d9VTv4hIu932fW+VCO+uwh9cTEEFQoUKhAoVCBUqECpUIFSoQKhQgVChAqFCBUKFCoQKFa5+rz9E4DZBtggacrehhm4TZIugLXcbasg2QbYI2nO3oR4EbBNki6AhXExBBUKFCnd/6vfFg4W2mAyVBwvtMRkqDxbaYzLUAx4stMN0qCEC57g1Efnl+dEhY0WMzq0J9QUhc9yyLBtFUXzsdDo/arXa/lZjD6zOrQn1BSFz3Ol02p1MJh+yLPt+y7EitufWhHqEzxx3uVy23mLsMybn1iz4QwVChQqc+o2xuoeXUA0JvSO3Wq02zrlvIuJ1N0/CltaO/kgI1ZCQ1YrZbPZuPB5/TtP0vU/koUtrp5bVCNUg3xWHkNvOIUtr5yyrESr+4bs09gpLa0eX1bjqhwqEChUIFSqcNUfN8zy69MCbzSYSESmKIprP54+3HK/1s7V+79Dx5/T1G/Inm7/h6NPjAAAAAElFTkSuQmCC"></img></td>
+      <td id="T_c6067_row6_col5" class="data row6 col5" >0<br>(0.0%)</td>
+    </tr>
+    <tr>
+      <td id="T_c6067_row7_col0" class="data row7 col0" >8</td>
+      <td id="T_c6067_row7_col1" class="data row7 col1" ><strong>dst_ip_total_bytes</strong><br>[int64]</td>
+      <td id="T_c6067_row7_col2" class="data row7 col2" >Mean (sd) : 288369.1 (311285.3)<br>min < med < max:<br>26.0 < 162436.5 < 1423395.0<br>IQR (CV) : 364478.0 (0.9)</td>
+      <td id="T_c6067_row7_col3" class="data row7 col3" >108,056 distinct values</td>
+      <td id="T_c6067_row7_col4" class="data row7 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKoAAABGCAYAAABc8A97AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAm1JREFUeJzt3b2O2kAYRuFvYEFmIUaIBDo36VNQ0uQOcrFp08MNUKRJRYOQEBjhLAI5ThOiSFnxMwOLX3SemvFQHMF4bGlcURQGlF3l3l8AOMfTqQ845xpmVve8/q4oihfPscBfR0N1zjW63e6XOI47Phdfr9dL59xXYkWoU7+o9TiOO8Ph8KXdbm8vuXCaptFoNOosFou6mREqgpz86zcza7fb216v99Pj+g2PMcB/uJmCBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFhLOO7/GV53nNzGLnnO8lOPkPZnbDULMsq+33+09JklSr1epFh6kdcPIfDm4W6m63e4qi6HkwGGz7/f7y0vGc/Id/3fSv38ys2Wz6nvpnxsl/+IObKUggVEggVEi4+Ro1ROD2FltbD6S0oYZub61Wq41z7puZeW2NGaGXSmlDDdnems1m78bj8eckSd6zh/sYShvqgc/21nK5bLCH+1hKH2oI9nAfB3f9kECokECokECokECokECokECokPDQ+6gheM+gXAj1FaHvGfD49foI9RUh7xnw+PU2CPUI30eweZ7H5r9sqJjZL5+BVxh/z7mPLpcI9cpClg15nteyLPvYarV+VCqV/aVzh4y/59xmp5dLhHplIcuG6XTamUwmHwaDwXeft75Cxt9z7nOWS2eFmqZpdMnEZmabzSYyM8uyLJrP589vOb4Mc+O6fgPANEb/QUUjLwAAAABJRU5ErkJggg=="></img></td>
+      <td id="T_c6067_row7_col5" class="data row7 col5" >0<br>(0.0%)</td>
+    </tr>
+    <tr>
+      <td id="T_c6067_row8_col0" class="data row8 col0" >9</td>
+      <td id="T_c6067_row8_col1" class="data row8 col1" ><strong>Numeric Source IP</strong><br>[int64]</td>
+      <td id="T_c6067_row8_col2" class="data row8 col2" >Mean (sd) : 3231669778.3 (42782000.9)<br>min < med < max:<br>0.0 < 3232236142.0 < 3232236228.0<br>IQR (CV) : 5.0 (75.5)</td>
+      <td id="T_c6067_row8_col3" class="data row8 col3" >22 distinct values</td>
+      <td id="T_c6067_row8_col4" class="data row8 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKoAAABGCAYAAABc8A97AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAVpJREFUeJzt10FOwlAYhdH3DEGYvKYhYTEswsW6CHZDTDsQ4oC6AhQaFK85Z/p6k3/wTVqnaSrw1z09+gC4xuLRB/B/1FrXpZTlzPnHNE3HS49C5S5qrevNZvPSWuvn7MdxfKu1vl6KVajcy7K11u92u2PXdadbhsMwrPb7fX84HJalFKHy87quO2232/cZ0/VXj36miCBUIgiVCEIlglCJIFQiCJUIQiWCUIkgVCIIlQhCJYJQiSBUIgiVCEIlglCJIFQiCJUIQiWCUIkgVCIIlQhCJYJQiSBUIgiVCEIlglCJIFQiCJUIQiWCUIkgVCIIlQhCJYJQiSBUIgiVCEIlglCJIFQiCJUIQiWCUIkgVCIIlQhCJYJQiSBUIgiVCEIlglCJIFQiCJUIQiWCUIkgVCIIlQhCJYJQiSBUIgiVCIvvPqi1rkopz79wC9na+XxeDMOwunV4zeYThUwpFu4YjC0AAAAASUVORK5CYII="></img></td>
+      <td id="T_c6067_row8_col5" class="data row8 col5" >0<br>(0.0%)</td>
+    </tr>
+    <tr>
+      <td id="T_c6067_row9_col0" class="data row9 col0" >10</td>
+      <td id="T_c6067_row9_col1" class="data row9 col1" ><strong>Numeric Destination IP</strong><br>[int64]</td>
+      <td id="T_c6067_row9_col2" class="data row9 col2" >Mean (sd) : 1970532932.1 (1039604758.0)<br>min < med < max:<br>134744072.0 < 2014854038.0 < 4294967295.0<br>IQR (CV) : 2358165255.0 (1.9)</td>
+      <td id="T_c6067_row9_col3" class="data row9 col3" >63 distinct values</td>
+      <td id="T_c6067_row9_col4" class="data row9 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKoAAABGCAYAAABc8A97AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAppJREFUeJzt3U9u2kAYhvFvCqEmCFuAlOxygETqgmUO0GUP2yN0wQEIN2CDkBByCgUBNl11VcSfGcB+ree3HzESj5CBz2O33+8NKLsvRW8AOEe96A3gupxzTTNreC7f7Pf71TX3cy2EWiHOuWav1/sRx3HHZ/3n5+fcOfezjLESarU04jjuvL+/r5IkWV+yME3TaDAYdGazWcPMCBW3lyTJ+unp6Y/H0ubVN3MlfJmCBEKFBEKFBEKFBEKFBEKFBEKFBEKFBEKFhJv+MxU4IGFW4iEJ3NfNQg0dkDAr95AE7uuWn6jeAxJm5R+SwH3dfCglYEDCrMAhiarOdapieuqAKs91qiLUwyo716mKUI+o4lynKn5HhQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChQRChYRSn5SSZdmDmcXOOZ/lHFRWIaUNdblcPmy3228vLy+1Wq128bGVHFRWLaUNdbPZ1KMoeuz3++vn5+f5JWs5qKx6ShvqP61Wi4PKwJcpaCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSCBUSDg5PRXwlOU4z/MHj3VXETh0Xeje8b+joYY8ZXm73UZZlr2t1+tfZub7GHQvoUPXRe4dh536RPV+yvJ4PO6MRqPH3W5XC9ifl5Cha7Ni947Dzhqc9nnK8nw+L3xw2Xfougx7VxRwmWh24h630k/4434Cr+ujbrf7PUmSls/iU/e4nRVqmqbRpS+8WCwiM7PlchlNp9PHe64v8rXTNI2yLKub/xseIs7zvO7zfk0mk3bodb2Zvb2+vn602+3fl6xdrVZfh8Ph0Xvc/gKVhyWG3DggtQAAAABJRU5ErkJggg=="></img></td>
+      <td id="T_c6067_row9_col5" class="data row9 col5" >0<br>(0.0%)</td>
+    </tr>
+    <tr>
+      <td id="T_c6067_row10_col0" class="data row10 col0" >11</td>
+      <td id="T_c6067_row10_col1" class="data row10 col1" ><strong>dst_port_freq_encoded</strong><br>[float64]</td>
+      <td id="T_c6067_row10_col2" class="data row10 col2" >Mean (sd) : 0.2 (0.2)<br>min < med < max:<br>0.0 < 0.2 < 0.4<br>IQR (CV) : 0.3 (1.5)</td>
+      <td id="T_c6067_row10_col3" class="data row10 col3" >33 distinct values</td>
+      <td id="T_c6067_row10_col4" class="data row10 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKoAAABGCAYAAABc8A97AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAjtJREFUeJzt3EFu2kAYhuF/akAGJFsICXZcoFIXLDlED9sjdMEJuAE7JISMcGJhbGcTpeoiAcZM6Qfvs4WJTPTK4WfIuKZpDPjffbv3BQCX6Nz7AvA4nHN9M+t5Lj82TfP62YOEiptwzvXH4/HPJElGPuv3+/3OOffrs1gJFbfSS5JktFgsXtM0La5ZmGVZvFwuR9vttmdmhIrw0jQtJpPJi8fS/lcPMkxBAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAmdPBRDy+MVnRag3Fvr4xWdFqLcX9PjFZ0WogYQ6fvFZMUxBAqFCAqFCAqFCAqFCAqFCAqFCAqFCQtAP/FvueZux7413wUJtu+dtxr43/gh5R/Xe8zZj3xt/C77X32LP24x9b7xjmIKEs3fUFgNRUtd112Pdh6qqumaWOOd8ljOIPZAvQ20zEJVlGVdV9b0oit9mdvWf/jzPu2VZ/pjNZlEURVe/x2UQeyzn7qjeA9F6vR6tVqvB6XSKfC7seDx24jgezOfzYjqd7q5ZyyD2eC4apnwGot1ud5NBaDgc8gVkMExBA6FCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCAqFCwkXfR82yLL72Bx8Oh9jMLM/zeLPZDP7l+izL4qqqOub/byxtJHVdd3x+Z3e+7rZave5zz3kDQ7TQSVfK9ugAAAAASUVORK5CYII="></img></td>
+      <td id="T_c6067_row10_col5" class="data row10 col5" >0<br>(0.0%)</td>
+    </tr>
+    <tr>
+      <td id="T_c6067_row11_col0" class="data row11 col0" >12</td>
+      <td id="T_c6067_row11_col1" class="data row11 col1" ><strong>Interarrival</strong><br>[float64]</td>
+      <td id="T_c6067_row11_col2" class="data row11 col2" >Mean (sd) : 0.0 (0.1)<br>min < med < max:<br>-0.0 < 0.0 < 1.2<br>IQR (CV) : 0.1 (0.5)</td>
+      <td id="T_c6067_row11_col3" class="data row11 col3" >66,690 distinct values</td>
+      <td id="T_c6067_row11_col4" class="data row11 col4" ><img src = "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAKoAAABGCAYAAABc8A97AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAgdJREFUeJzt2MGK2lAUh/FzqiNxhARxiDsfoQuXPkQfdrZdCnkYIegNZpIqcrvrprSONyP1P/1+a8/hIh/JVY8xGvDovvzrAwDvMb72AXefmtkkcf8pxtglzgK//DVUd58uFotveZ7PU5Y3TbN391dixVDXnqiTPM/nm82mK4qiv2VxCCGrqmpe1/XEzAgVg1x99ZuZFUXRl2X5lrB/mjAD/IYfU5BAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJBAqJAwvufyy+XyZGa5u6euOMUYuw88EkTdLdS2bZ/O5/PX1Wo1Go1GfcqOpmn27v5KrLhbqKfTaZxl2fN6ve6Xy+X+1vkQQlZV1byu64mZEep/7q6vfjOz2WzWl2X5ljg+/dDDQNbdQx1i4B2X++0n8rChDr3jcr/9XB421CF33BBCtt1uy7quX9y9ST0CkT+Od4UaQshuXXw8HjMzs7Zts91u95w6n6LrusH/OBwOh6O7fzezpHnc7EeM8Y/f9U8nrpUFexrA9wAAAABJRU5ErkJggg=="></img></td>
+      <td id="T_c6067_row11_col5" class="data row11 col5" >1<br>(0.0%)</td>
+    </tr>
+  </tbody>
+</table>

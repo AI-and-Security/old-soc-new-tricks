@@ -39,6 +39,6 @@ export UV_PYTHON_PREFERENCE="only-managed"
 - Add your OPENAI_API_KEY or feel free to modify the code to use any other LLM provider
 - Rename `.env.example` to `.env`
 - Replace "Topic/Your Name" with a something of your choice that is non-adversarial in `ti/src/ti/main.py`
-
+- From `ti/` directory, run `uvx crewai run`
 ### Windows Instructions
 Coming Soon! 

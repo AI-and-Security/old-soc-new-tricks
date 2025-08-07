@@ -3,6 +3,8 @@ __pycache__/
 .venv
 .python-version
 .DS_Store
-*.txt
 .ruff_cache
 cache/*
+**/tmp/*
+**/db/*
+**/.deepeval

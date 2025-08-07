@@ -1,0 +1,21 @@
+osint_task:
+  description: >
+    Conduct OSINT aka Open Source Intelligence to identify and list at least 2 relevant information on {topic}.
+  expected_output: >
+    Bulleted list of top 2 intelligence items
+  agent: osint_researcher
+
+
+scraper_task:
+  description: >
+    Scrape each resource provided by the osint_researcher and extract detailed information like contact, e-mail addresses, location, technology stack
+  expected_output: >
+    Bulleted list of top 5 scraped items
+  agent: web_scraper
+
+writer_task:
+  description: >
+    Document information gathered so far
+  expected_output: >
+    A table with {topic} and information gathered so far easy for human consumption. 
+  agent: writer
