@@ -1,0 +1,10 @@
+Model,Metric,Score
+Claude-Sonnet-4,statistics_correctness,0.8562176500885798
+Claude-Sonnet-4,hypothesis_correctness,0.3717869066122742
+Claude-Sonnet-4,outlier_correctness,0.8679178699175394
+Gemini-2.5-Flash,statistics_correctness,0.825584547658684
+Gemini-2.5-Flash,hypothesis_correctness,0.39619527991592557
+Gemini-2.5-Flash,outlier_correctness,0.888079707015525
+OpenAI-gpt-4o,statistics_correctness,0.767917868618784
+OpenAI-gpt-4o,hypothesis_correctness,0.37489265144741446
+OpenAI-gpt-4o,outlier_correctness,0.7911382525202313

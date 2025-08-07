@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI/ML Security Decision Tree - Interactive Network</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #2c3e50;
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0);
+            background-size: 30px 30px;
+            min-height: 100vh;
+            color: #ecf0f1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #34495e;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 
+                0 0 30px rgba(0,0,0,0.5),
+                inset 0 0 100px rgba(255,255,255,0.05);
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #bdc3c7;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .control-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .control-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .control-btn.active {
+            background: #e74c3c;
+        }
+
+        #network-container {
+            width: 100%;
+            height: 800px;
+            background: #1a252f;
+            border-radius: 15px;
+            border: 2px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legend {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-size: 14px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .info-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(26, 37, 47, 0.95);
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            max-width: 350px;
+            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .info-panel.visible {
+            opacity: 1;
+        }
+
+        .instructions {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+
+        .technique-badge {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin: 2px;
+            font-weight: bold;
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin: 2px;
+            font-weight: bold;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            background: #9b59b6;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin: 2px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 AI/ML Security Decision Network</h1>
+        <p class="subtitle">Click and drag nodes to explore • Hover for details • Use mouse wheel to zoom</p>
+        
+        <div class="instructions">
+            <strong>💡 How to use:</strong> Start with the central "I would like to..." node and follow the connections to find the right technique for your security challenge. Each path represents a different approach based on your specific needs.
+        </div>
+
+        <div class="controls">
+            <button class="control-btn" id="reset-btn">🔄 Reset Layout</button>
+            <button class="control-btn" id="center-btn">🎯 Center View</button>
+            <button class="control-btn" id="highlight-btn">✨ Highlight Techniques</button>
+            <button class="control-btn" id="physics-btn">⚡ Toggle Physics</button>
+        </div>
+
+        <div id="network-container">
+            <div class="info-panel" id="info-panel">
+                <div id="info-content">Click on a node to see detailed information</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #e74c3c;"></div>
+                <span>🎯 Start Here</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #3498db;"></div>
+                <span>📋 Goals</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #f39c12;"></div>
+                <span>❓ Decisions</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #27ae60;"></div>
+                <span>🛠️ Techniques</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #9b59b6;"></div>
+                <span>🎯 Applications</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced data structure for vis.js
+        const nodes = new vis.DataSet([
+            // Center node
+            {
+                id: 'center',
+                label: '🎯 I would like to...',
+                title: 'Choose your goal to explore AI/ML techniques for security analysis',
+                color: {background: '#e74c3c', border: '#c0392b', highlight: {background: '#ec7063', border: '#e74c3c'}},
+                font: {size: 18, color: '#ffffff', face: 'arial', bold: true},
+                size: 40,
+                type: 'center',
+                description: 'Start your journey here! Click on connected nodes to explore different AI/ML approaches for security analysis.',
+                physics: false,
+                x: 0,
+                y: 0
+            },
+            
+            // Primary goals
+            {
+                id: 'quick_response',
+                label: '🚨 Quick Incident\nResponse',
+                title: 'Get fast answers during active security incidents',
+                color: {background: '#3498db', border: '#2980b9', highlight: {background: '#5dade2', border: '#3498db'}},
+                font: {size: 14, color: '#ffffff', face: 'arial', bold: true},
+                size: 35,
+                type: 'goal',
+                description: 'When the SOC is on fire and you need actionable intelligence in minutes, not hours.',
+                timeInvestment: '2-45 minutes',
+                skillLevel: 'Beginner to Intermediate'
+            },
+            {
+                id: 'pattern_discovery',
+                label: '🔍 Discover Unknown\nPatterns',
+                title: 'Find hidden patterns and anomalies in your data',
+                color: {background: '#3498db', border: '#2980b9', highlight: {background: '#5dade2', border: '#3498db'}},
+                font: {size: 14, color: '#ffffff', face: 'arial', bold: true},
+                size: 35,
+                type: 'goal',
+                description: 'Perfect for threat hunting and discovering new attack patterns you didn\'t know existed.',
+                timeInvestment: '1 hour to 2 weeks',
+                skillLevel: 'Intermediate to Advanced'
+            },
+            {
+                id: 'auto_classify',
+                label: '🤖 Automate\nClassification',
+                title: 'Automatically classify threats and events',
+                color: {background: '#3498db', border: '#2980b9', highlight: {background: '#5dade2', border: '#3498db'}},
+                font: {size: 14, color: '#ffffff', face: 'arial', bold: true},
+                size: 35,
+                type: 'goal',
+                description: 'Build systems that can automatically identify malware, phishing, or other security threats.',
+                timeInvestment: '2 days to 2 weeks',
+                skillLevel: 'Intermediate to Advanced'
+            },
+            {
+                id: 'text_analysis',
+                label: '📝 Understand Text\n& Logs',
+                title: 'Analyze unstructured text and log data',
+                color: {background: '#3498db', border: '#2980b9', highlight: {background: '#5dade2', border: '#3498db'}},
+                font: {size: 14, color: '#ffffff', face: 'arial', bold: true},
+                size: 35,
+                type: 'goal',
+                description: 'Extract insights from security logs, incident reports, and other text-based security data.',
+                timeInvestment: '1-3 days',
+                skillLevel: 'Intermediate'
+            },
+            {
+                id: 'relationship_mapping',
+                label: '🕸️ Map Relationships\n& Connections',
+                title: 'Understand how entities are connected',
+                color: {background: '#3498db', border: '#2980b9', highlight: {background: '#5dade2', border: '#3498db'}},
+                font: {size: 14, color: '#ffffff', face: 'arial', bold: true},
+                size: 35,
+                type: 'goal',
+                description: 'Analyze networks of attackers, infrastructure, and attack paths to understand threat landscapes.',
+                timeInvestment: '2-4 weeks',
+                skillLevel: 'Advanced'
+            },
+            {
+                id: 'adaptive_systems',
+                label: '🎮 Build Adaptive\nDefense Systems',
+                title: 'Create systems that learn and improve',
+                color: {background: '#3498db', border: '#2980b9', highlight: {background: '#5dade2', border: '#3498db'}},
+                font: {size: 14, color: '#ffffff', face: 'arial', bold: true},
+                size: 35,
+                type: 'goal',
+                description: 'Develop security systems that automatically adapt to new threats and attack patterns.',
+                timeInvestment: '2-3 months',
+                skillLevel: 'Expert'
+            },
+
+            // Decision nodes
+            {
+                id: 'data_size_decision',
+                label: '📊 What\'s your\ndata size?',
+                title: 'Choose approach based on dataset size',
+                color: {background: '#f39c12', border: '#e67e22', highlight: {background: '#f7dc6f', border: '#f39c12'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 25,
+                type: 'decision'
+            },
+            {
+                id: 'pattern_type_decision',
+                label: '🎯 What kind of\npatterns?',
+                title: 'Different techniques for different pattern types',
+                color: {background: '#f39c12', border: '#e67e22', highlight: {background: '#f7dc6f', border: '#f39c12'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 25,
+                type: 'decision'
+            },
+            {
+                id: 'labels_decision',
+                label: '🏷️ Do you have\nlabeled examples?',
+                title: 'Supervised vs Unsupervised approaches',
+                color: {background: '#f39c12', border: '#e67e22', highlight: {background: '#f7dc6f', border: '#f39c12'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 25,
+                type: 'decision'
+            },
+
+            // Technique nodes
+            {
+                id: 'excel',
+                label: '📊 Excel/Google\nSheets',
+                title: 'Perfect for small datasets and quick analysis',
+                color: {background: '#27ae60', border: '#229954', highlight: {background: '#58d68d', border: '#27ae60'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 30,
+                type: 'technique',
+                description: 'The tried-and-true method for quick incident response analysis.',
+                applications: ['Pivot tables for top talkers', 'VLOOKUP for reputation checks', 'Conditional formatting for thresholds', 'Quick charts for management'],
+                timeInvestment: '2-10 minutes',
+                skillLevel: 'Beginner',
+                whenToUse: 'Active incidents, small datasets (<10K rows), need results NOW'
+            },
+            {
+                id: 'python_pandas',
+                label: '🐍 Python +\nPandas',
+                title: 'Flexible analysis for medium datasets',
+                color: {background: '#27ae60', border: '#229954', highlight: {background: '#58d68d', border: '#27ae60'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 30,
+                type: 'technique',
+                description: 'More powerful than Excel, perfect for custom analysis and automation.',
+                applications: ['Custom aggregations and grouping', 'Statistical analysis', 'Data visualization', 'Automated reporting'],
+                timeInvestment: '15-45 minutes',
+                skillLevel: 'Intermediate',
+                whenToUse: 'Medium datasets (10K-100K rows), need custom logic, want to save/reuse analysis'
+            },
+            {
+                id: 'isolation_forest',
+                label: '🌲 Isolation\nForest',
+                title: 'Excellent for detecting outliers and anomalies',
+                color: {background: '#27ae60', border: '#229954', highlight: {background: '#58d68d', border: '#27ae60'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 30,
+                type: 'technique',
+                description: 'Finds anomalies by isolating unusual data points. Great for unknown threats.',
+                applications: ['Network traffic anomalies', 'Unusual user behavior', 'System performance outliers', 'Zero-day threat detection'],
+                timeInvestment: '1-3 hours',
+                skillLevel: 'Intermediate',
+                whenToUse: 'Looking for unknown anomalies, large datasets, don\'t know what you\'re looking for'
+            },
+            {
+                id: 'clustering',
+                label: '🎯 Clustering\n(K-Means/DBSCAN)',
+                title: 'Group similar items to find patterns',
+                color: {background: '#27ae60', border: '#229954', highlight: {background: '#58d68d', border: '#27ae60'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 30,
+                type: 'technique',
+                description: 'Automatically groups similar items together to reveal hidden structure.',
+                applications: ['Malware family classification', 'User behavior segmentation', 'Attack campaign grouping', 'Network device clustering'],
+                timeInvestment: '2-4 hours',
+                skillLevel: 'Intermediate',
+                whenToUse: 'Want to group similar items, discover categories, understand data structure'
+            },
+            {
+                id: 'supervised_ml',
+                label: '🎓 Supervised\nMachine Learning',
+                title: 'When you have examples to learn from',
+                color: {background: '#27ae60', border: '#229954', highlight: {background: '#58d68d', border: '#27ae60'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 30,
+                type: 'technique',
+                description: 'Train models on labeled examples to automatically classify new data.',
+                applications: ['Malware detection', 'Phishing email classification', 'Alert prioritization', 'Fraud detection'],
+                timeInvestment: '1-2 weeks setup',
+                skillLevel: 'Advanced',
+                whenToUse: 'Have labeled training data, want automation, need high accuracy'
+            },
+            {
+                id: 'unsupervised_ml',
+                label: '🔍 Unsupervised\nMachine Learning',
+                title: 'Discover patterns without examples',
+                color: {background: '#27ae60', border: '#229954', highlight: {background: '#58d68d', border: '#27ae60'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 30,
+                type: 'technique',
+                description: 'Find patterns and anomalies without needing labeled training data.',
+                applications: ['Anomaly detection', 'Pattern discovery', 'Data exploration', 'Behavioral analysis'],
+                timeInvestment: '2-5 days',
+                skillLevel: 'Intermediate',
+                whenToUse: 'No labeled data, exploring unknown patterns, threat hunting'
+            },
+            {
+                id: 'llms',
+                label: '🧠 Large Language\nModels (LLMs)',
+                title: 'Advanced text understanding and reasoning',
+                color: {background: '#27ae60', border: '#229954', highlight: {background: '#58d68d', border: '#27ae60'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 30,
+                type: 'technique',
+                description: 'AI models that can understand and analyze human language in security contexts.',
+                applications: ['Security log interpretation', 'Incident report summarization', 'Policy analysis', 'Threat intelligence extraction'],
+                timeInvestment: '1-3 days',
+                skillLevel: 'Intermediate',
+                whenToUse: 'Analyzing text data, need natural language understanding, complex reasoning required'
+            },
+            {
+                id: 'graph_analytics',
+                label: '🕸️ Graph\nAnalytics',
+                title: 'Network analysis and relationship mapping',
+                color: {background: '#27ae60', border: '#229954', highlight: {background: '#58d68d', border: '#27ae60'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 30,
+                type: 'technique',
+                description: 'Analyze connections and relationships between entities like IPs, domains, and users.',
+                applications: ['Threat actor network mapping', 'Attack path analysis', 'Infrastructure clustering', 'Social network analysis'],
+                timeInvestment: '2-4 weeks',
+                skillLevel: 'Advanced',
+                whenToUse: 'Data has relationships/connections, need to understand network structure, mapping attack infrastructure'
+            },
+            {
+                id: 'reinforcement_learning',
+                label: '🎮 Reinforcement\nLearning',
+                title: 'Systems that learn from interaction and feedback',
+                color: {background: '#27ae60', border: '#229954', highlight: {background: '#58d68d', border: '#27ae60'}},
+                font: {size: 12, color: '#ffffff', face: 'arial', bold: true},
+                size: 30,
+                type: 'technique',
+                description: 'AI that learns optimal actions through trial and error, perfect for adaptive defense.',
+                applications: ['Adaptive firewall rules', 'Dynamic incident response', 'Self-tuning detection systems', 'Automated threat hunting'],
+                timeInvestment: '2-3 months',
+                skillLevel: 'Expert',
+                whenToUse: 'Need systems that adapt over time, dynamic environments, automated decision making'
+            }
+        ]);
+
+        const edges = new vis.DataSet([
+            // Center to goals
+            {from: 'center', to: 'quick_response', color: {color: '#ecf0f1', highlight: '#f39c12'}, width: 3},
+            {from: 'center', to: 'pattern_discovery', color: {color: '#ecf0f1', highlight: '#f39c12'}, width: 3},
+            {from: 'center', to: 'auto_classify', color: {color: '#ecf0f1', highlight: '#f39c12'}, width: 3},
+            {from: 'center', to: 'text_analysis', color: {color: '#ecf0f1', highlight: '#f39c12'}, width: 3},
+            {from: 'center', to: 'relationship_mapping', color: {color: '#ecf0f1', highlight: '#f39c12'}, width: 3},
+            {from: 'center', to: 'adaptive_systems', color: {color: '#ecf0f1', highlight: '#f39c12'}, width: 3},
+
+            // Goals to decisions
+            {from: 'quick_response', to: 'data_size_decision', color: {color: '#bdc3c7', highlight: '#f39c12'}, width: 2},
+            {from: 'pattern_discovery', to: 'pattern_type_decision', color: {color: '#bdc3c7', highlight: '#f39c12'}, width: 2},
+            {from: 'auto_classify', to: 'labels_decision', color: {color: '#bdc3c7', highlight: '#f39c12'}, width: 2},
+
+            // Direct goal to technique connections
+            {from: 'text_analysis', to: 'llms', color: {color: '#bdc3c7', highlight: '#27ae60'}, width: 2},
+            {from: 'relationship_mapping', to: 'graph_analytics', color: {color: '#bdc3c7', highlight: '#27ae60'}, width: 2},
+            {from: 'adaptive_systems', to: 'reinforcement_learning', color: {color: '#bdc3c7', highlight: '#27ae60'}, width: 2},
+
+            // Decisions to techniques
+            {from: 'data_size_decision', to: 'excel', color: {color: '#95a5a6', highlight: '#27ae60'}, width: 2, label: 'Small Data\n(<10K rows)'},
+            {from: 'data_size_decision', to: 'python_pandas', color: {color: '#95a5a6', highlight: '#27ae60'}, width: 2, label: 'Medium Data\n(10K-100K rows)'},
+            
+            {from: 'pattern_type_decision', to: 'isolation_forest', color: {color: '#95a5a6', highlight: '#27ae60'}, width: 2, label: 'Outliers &\nAnomalies'},
+            {from: 'pattern_type_decision', to: 'clustering', color: {color: '#95a5a6', highlight: '#27ae60'}, width: 2, label: 'Hidden\nGroups'},
+            
+            {from: 'labels_decision', to: 'supervised_ml', color: {color: '#95a5a6', highlight: '#27ae60'}, width: 2, label: 'Yes - Have\nExamples'},
+            {from: 'labels_decision', to: 'unsupervised_ml', color: {color: '#95a5a6', highlight: '#27ae60'}, width: 2, label: 'No - Discover\nCategories'}
+        ]);
+
+        // Network options
+        const options = {
+            nodes: {
+                shape: 'box',
+                margin: 10,
+                font: {
+                    face: 'arial',
+                    vadjust: 0,
+                    bold: {
+                        face: 'arial',
+                        vadjust: 0,
+                        mod: 'bold'
+                    }
+                },
+                borderWidth: 3,
+                shadow: {
+                    enabled: true,
+                    color: 'rgba(0,0,0,0.3)',
+                    size: 8,
+                    x: 3,
+                    y: 3
+                },
+                chosen: {
+                    node: function(values, id, selected, hovering) {
+                        values.shadow = true;
+                        values.shadowColor = 'rgba(255,255,255,0.5)';
+                        values.shadowSize = 15;
+                    }
+                }
+            },
+            edges: {
+                smooth: {
+                    type: 'curvedCW',
+                    roundness: 0.2
+                },
+                font: {
+                    size: 11,
+                    color: '#ecf0f1',
+                    strokeWidth: 3,
+                    strokeColor: '#2c3e50'
+                },
+                shadow: true
+            },
+            physics: {
+                enabled: true,
+                solver: 'forceAtlas2Based',
+                forceAtlas2Based: {
+                    gravitationalConstant: -50,
+                    centralGravity: 0.01,
+                    springLength: 200,
+                    springConstant: 0.08,
+                    damping: 0.4,
+                    avoidOverlap: 1
+                },
+                maxVelocity: 30,
+                minVelocity: 0.1,
+                timestep: 0.35,
+                stabilization: {
+                    enabled: true,
+                    iterations: 100,
+                    updateInterval: 25
+                }
+            },
+            interaction: {
+                dragNodes: true,
+                dragView: true,
+                zoomView: true,
+                hover: true,
+                hoverConnectedEdges: true,
+                selectConnectedEdges: false
+            },
+            layout: {
+                improvedLayout: true,
+                clusterThreshold: 150
+            }
+        };
+
+        // Initialize network
+        const container = document.getElementById('network-container');
+        const data = { nodes: nodes, edges: edges };
+        const network = new vis.Network(container, data, options);
+
+        // Info panel
+        const infoPanel = document.getElementById('info-panel');
+        const infoContent = document.getElementById('info-content');
+
+        // Event handlers
+        network.on('click', function(params) {
+            if (params.nodes.length > 0) {
+                const nodeId = params.nodes[0];
+                const node = nodes.get(nodeId);
+                showNodeInfo(node);
+            } else {
+                hideNodeInfo();
+            }
+        });
+
+        network.on('hoverNode', function(params) {
+            const nodeId = params.node;
+            const node = nodes.get(nodeId);
+            showNodeInfo(node);
+        });
+
+        network.on('blurNode', function(params) {
+            setTimeout(() => {
+                if (!infoPanel.matches(':hover')) {
+                    hideNodeInfo();
+                }
+            }, 100);
+        });
+
+        function showNodeInfo(node) {
+            let content = `<h3>${node.label.replace(/\n/g, ' ')}</h3>`;
+            content += `<p><strong>Description:</strong> ${node.description || node.title}</p>`;
+            
+            if (node.applications) {
+                content += `<p><strong>🎯 Applications:</strong></p><ul>`;
+                node.applications.forEach(app => {
+                    content += `<li>${app}</li>`;
+                });
+                content += `</ul>`;
+            }
+            
+            if (node.timeInvestment) {
+                content += `<p><span class="time-badge">⏱️ ${node.timeInvestment}</span></p>`;
+            }
+            
+            if (node.skillLevel) {
+                content += `<p><span class="skill-badge">📚 ${node.skillLevel}</span></p>`;
+            }
+            
+            if (node.whenToUse) {
+                content += `<p><strong>💡 When to use:</strong> ${node.whenToUse}</p>`;
+            }
+
+            infoContent.innerHTML = content;
+            infoPanel.classList.add('visible');
+        }
+
+        function hideNodeInfo() {
+            infoPanel.classList.remove('visible');
+        }
+
+        // Control buttons
+        let physicsEnabled = true;
+
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            network.setData(data);
+            network.fit();
+        });
+
+        document.getElementById('center-btn').addEventListener('click', function() {
+            network.focus('center', {
+                scale: 1.0,
+                animation: {
+                    duration: 1000,
+                    easingFunction: 'easeInOutQuad'
+                }
+            });
+        })
+        

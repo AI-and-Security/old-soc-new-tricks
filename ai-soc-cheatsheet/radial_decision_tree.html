@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI/ML Security Decision Tree - GoJS Interactive</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/2.3.13/go.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #2c3e50;
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0);
+            background-size: 30px 30px;
+            min-height: 100vh;
+            color: #ecf0f1;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: #34495e;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 
+                0 0 30px rgba(0,0,0,0.5),
+                inset 0 0 100px rgba(255,255,255,0.05);
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #bdc3c7;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .diagram-section {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .control-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .control-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .control-btn.active {
+            background: #e74c3c;
+        }
+
+        #diagram-container {
+            width: 100%;
+            height: 700px;
+            background: #1a252f;
+            border-radius: 15px;
+            border: 2px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-panel {
+            width: 350px;
+            background: rgba(26, 37, 47, 0.95);
+            color: #ecf0f1;
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 14px;
+            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            max-height: 700px;
+            overflow-y: auto;
+        }
+
+        .info-panel h3 {
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        .info-panel h4 {
+            color: #3498db;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .info-panel ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .info-panel li {
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 3px;
+        }
+
+        .time-badge {
+            background: #f39c12;
+            color: white;
+        }
+
+        .skill-badge {
+            background: #9b59b6;
+            color: white;
+        }
+
+        .type-badge {
+            background: #27ae60;
+            color: white;
+        }
+
+        .legend {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-size: 14px;
+        }
+
+        .legend-shape {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .instructions {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .path-highlight {
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.2), rgba(155, 89, 182, 0.2));
+            border: 1px solid rgba(52, 152, 219, 0.5);
+            border-radius: 5px;
+            padding: 8px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 AI/ML Security Decision Tree</h1>
+        <p class="subtitle">Interactive guide to choosing the right AI/ML technique for your security challenges</p>
+        
+        <div class="instructions">
+            <strong>💡 How to navigate:</strong> Click on the central "I would like to..." node and follow the connections to explore different approaches. Each path represents a decision journey from your goal to specific techniques. Hover over nodes for quick info, click for detailed information.
+        </div>
+
+        <div class="main-content">
+            <div class="diagram-section">
+                <div class="controls">
+                    <button class="control-btn" id="reset-btn">🔄 Reset View</button>
+                    <button class="control-btn" id="center-btn">🎯 Center</button>
+                    <button class="control-btn" id="expand-btn">📋 Expand All</button>
+                    <button class="control-btn" id="highlight-btn">✨ Show Path</button>
+                    <button class="control-btn" id="layout-btn">🔄 Re-layout</button>
+                </div>
+                <div id="diagram-container"></div>
+            </div>
+
+            <div class="info-panel" id="info-panel">
+                <h3>🚀 Getting Started</h3>
+                <p>Welcome to the AI/ML Security Decision Tree! This interactive guide helps you choose the right approach for your security analysis needs.</p>
+                
+                <h4>🎯 Start Here:</h4>
+                <p>Click on the central <strong>"I would like to..."</strong> node to begin exploring your options.</p>
+                
+                <h4>🔍 How it works:</h4>
+                <ul>
+                    <li><strong>Goals (Blue):</strong> Your high-level objectives</li>
+                    <li><strong>Decisions (Orange):</strong> Key questions to ask</li>
+                    <li><strong>Techniques (Green):</strong> Specific AI/ML methods</li>
+                </ul>
+                
+                <h4>💡 Tips:</h4>
+                <ul>
+                    <li>Hover over any node for a quick preview</li>
+                    <li>Click nodes for detailed information</li>
+                    <li>Use the controls above to navigate</li>
+                    <li>Follow the logical path from goals to techniques</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-shape" style="background: #e74c3c;"></div>
+                <span>🎯 Start Here</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-shape" style="background: #3498db;"></div>
+                <span>📋 Goals</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-shape" style="background: #f39c12;"></div>
+                <span>❓ Decisions</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-shape" style="background: #27ae60;"></div>
+                <span>🛠️ Techniques</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize GoJS
+        const $ = go.GraphObject.make;
+
+        // Create the diagram
+        const diagram = $(go.Diagram, "diagram-container", {
+            "undoManager.isEnabled": true,
+            layout: $(go.ForceDirectedLayout, {
+                maxIterations: 200,
+                defaultSpringLength: 150,
+                defaultElectricalCharge: 200,
+                epsilonDistance: 1
+            }),
+            "toolManager.hoverDelay": 100,
+            "animationManager.isEnabled": true
+        });
+
+        // Define node template
+        diagram.nodeTemplate = $(go.Node, "Auto",
+            {
+                locationSpot: go.Spot.Center,
+                isShadowed: true,
+                shadowOffset: new go.Point(3, 3),
+                shadowColor: "rgba(0,0,0,0.3)"
+            },
+            new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+            
+            // Node shape
+            $(go.Shape, "RoundedRectangle", {
+                strokeWidth: 3,
+                stroke: "#ffffff"
+            },
+            new go.Binding("fill", "color"),
+            new go.Binding("stroke", "borderColor"),
+            new go.Binding("width", "width"),
+            new go.Binding("height", "height")),
+            
+            // Node text
+            $(go.TextBlock, {
+                margin: 12,
+                font: "bold 12px Segoe UI, sans-serif",
+                stroke: "#ffffff",
+                textAlign: "center",
+                verticalAlignment: go.Spot.Center,
+                wrap: go.TextBlock.WrapFit,
+                maxLines: 3
+            },
+            new go.Binding("text", "text"),
+            new go.Binding("font", "font"),
+            new go.Binding("stroke", "textColor")),
+            
+            // Tooltip
+            {
+                toolTip: $("ToolTip",
+                    $(go.TextBlock, {
+                        margin: 8,
+                        font: "12px Segoe UI, sans-serif",
+                        maxSize: new go.Size(300, NaN),
+                        wrap: go.TextBlock.WrapFit
+                    },
+                    new go.Binding("text", "tooltip"))
+                )
+            },
+            
+            // Click event
+            {
+                click: function(e, node) {
+                    showNodeDetails(node.data);
+                }
+            },
+            
+            // Hover events
+            {
+                mouseEnter: function(e, node) {
+                    node.isHighlighted = true;
+                    highlightConnectedNodes(node, true);
+                },
+                mouseLeave: function(e, node) {
+                    node.isHighlighted = false;
+                    highlightConnectedNodes(node, false);
+                }
+            }
+        );
+
+        // Define link template
+        diagram.linkTemplate = $(go.Link,
+            {
+                routing: go.Link.AvoidsNodes,
+                curve: go.Link.JumpOver,
+                corner: 10,
+                reshapable: true,
+                resegmentable: true,
+                relinkableFrom: true,
+                relinkableTo: true
+            },
+            new go.Binding("points").makeTwoWay(),
+            
+            $(go.Shape, {
+                strokeWidth: 3,
+                stroke: "rgba(236, 240, 241, 0.6)"
+            },
+            new go.Binding("stroke", "color"),
+            new go.Binding("strokeWidth", "width")),
+            
+            $(go.Shape, {
+                toArrow: "Standard",
+                fill: "rgba(236, 240, 241, 0.8)",
+                stroke: null,
+                scale: 1.2
+            },
+            new go.Binding("fill", "color")),
+            
+            // Link labels
+            $(go.TextBlock, {
+                segmentOffset: new go.Point(0, -12),
+                segmentOrientation: go.Link.OrientUpright,
+                font: "10px Segoe UI, sans-serif",
+                stroke: "#ecf0f1",
+                background: "rgba(52, 73, 94, 0.8)",
+                margin: 4
+            },
+            new go.Binding("text", "label"))
+        );
+
+        // Node data
+        const nodeDataArray = [
+            // Center node
+            {
+                key: "center",
+                text: "🎯 I would like to...",
+                color: "#e74c3c",
+                borderColor: "#c0392b",
+                textColor: "#ffffff",
+                font: "bold 16px Segoe UI, sans-serif",
+                width: 180,
+                height: 60,
+                type: "center",
+                tooltip: "Start here! Choose your security analysis goal.",
+                description: "This is your starting point for choosing the right AI/ML technique for security analysis. Each connected node represents a different goal or approach you might want to take.",
+                category: "Starting Point"
+            },
+            
+            // Primary goals
+            {
+                key: "quick_response",
+                text: "🚨 Quick Incident Response",
+                color: "#3498db",
+                borderColor: "#2980b9",
+                textColor: "#ffffff",
+                font: "bold 13px Segoe UI, sans-serif",
+                width: 150,
+                height: 50,
+                type: "goal",
+                tooltip: "Get fast answers during active security incidents",
+                description: "When the SOC is on fire and you need actionable intelligence in minutes, not hours. Perfect for active incident response scenarios.",
+                timeInvestment: "2-45 minutes",
+                skillLevel: "Beginner to Intermediate",
+                category: "Incident Response"
+            },
+            {
+                key: "pattern_discovery",
+                text: "🔍 Discover Unknown Patterns",
+                color: "#3498db",
+                borderColor: "#2980b9",
+                textColor: "#ffffff",
+                font: "bold 13px Segoe UI, sans-serif",
+                width: 150,
+                height: 50,
+                type: "goal",
+                tooltip: "Find hidden patterns and anomalies in your data",
+                description: "Perfect for threat hunting and discovering new attack patterns you didn't know existed. Use when you suspect something is wrong but don't know what.",
+                timeInvestment: "1 hour to 2 weeks",
+                skillLevel: "Intermediate to Advanced",
+                category: "Threat Hunting"
+            },
+            {
+                key: "auto_classify",
+                text: "🤖 Automate Classification",
+                color: "#3498db",
+                borderColor: "#2980b9",
+                textColor: "#ffffff",
+                font: "bold 13px Segoe UI, sans-serif",
+                width: 150,
+                height: 50,
+                type: "goal",
+                tooltip: "Automatically classify threats and events",
+                description: "Build systems that can automatically identify malware, phishing, or other security threats without human intervention.",
+                timeInvestment: "2 days to 2 weeks",
+                skillLevel: "Intermediate to Advanced",
+                category: "Automation"
+            },
+            {
+                key: "text_analysis",
+                text: "📝 Understand Text & Logs",
+                color: "#3498db",
+                borderColor: "#2980b9",
+                textColor: "#ffffff",
+                font: "bold 13px Segoe UI, sans-serif",
+                width: 150,
+                height: 50,
+                type: "goal",
+                tooltip: "Analyze unstructured text and log data",
+                description: "Extract insights from security logs, incident reports, and other text-based security data using natural language processing.",
+                timeInvestment: "1-3 days",
+                skillLevel: "Intermediate",
+                category: "Log Analysis"
+            },
+            {
+                key: "relationship_mapping",
+                text: "🕸️ Map Relationships",
+                color: "#3498db",
+                borderColor: "#2980b9",
+                textColor: "#ffffff",
+                font: "bold 13px Segoe UI, sans-serif",
+                width: 150,
+                height: 50,
+                type: "goal",
+                tooltip: "Understand how entities are connected",
+                description: "Analyze networks of attackers, infrastructure, and attack paths to understand threat landscapes and identify key nodes.",
+                timeInvestment: "2-4 weeks",
+                skillLevel: "Advanced",
+                category: "Network Analysis"
+            },
+            
+            // Decision nodes
+            {
+                key: "data_size_decision",
+                text: "📊 What's your data size?",
+                color: "#f39c12",
+                borderColor: "#e67e22",
+                textColor: "#ffffff",
+                font: "bold 12px Segoe UI, sans-serif",
+                width: 130,
+                height: 45,
+                type: "decision",
+                tooltip: "Choose approach based on dataset size",
+                description: "The size of your dataset determines which tools and techniques will be most effective. Smaller datasets work great with Excel, while larger ones need more powerful tools.",
+                category: "Decision Point"
+            },
+            {
+                key: "pattern_type_decision",
+                text: "🎯 What kind of patterns?",
+                color: "#f39c12",
+                borderColor: "#e67e22",
+                textColor: "#ffffff",
+                font: "bold 12px Segoe UI, sans-serif",
+                width: 130,
+                height: 45,
+                type: "decision",
+                tooltip: "Different techniques for different pattern types",
+                description: "Different types of patterns require different analytical approaches. Outliers need different techniques than hidden groups or complex behaviors.",
+                category: "Decision Point"
+            },
+            {
+                key: "labels_decision",
+                text: "🏷️ Do you have labeled examples?",
+                color: "#f39c12",
+                borderColor: "#e67e22",
+                textColor: "#ffffff",
+                font: "bold 12px Segoe UI, sans-serif",
+                width: 130,
+                height: 45,
+                type: "decision",
+                tooltip: "Supervised vs Unsupervised approaches",
+                description: "Whether you have labeled training data determines if you can use supervised learning (with examples) or need unsupervised learning (discover patterns).",
+                category: "Decision Point"
+            },
+            
+            // Technique nodes
+            {
+                key: "excel",
+                text: "📊 Excel/Google Sheets",
+                color: "#27ae60",
+                borderColor: "#229954",
+                textColor: "#ffffff",
+                font: "bold 12px Segoe UI, sans-serif",
+                width: 140,
+                height: 45,
+                type: "technique",
+                tooltip: "Perfect for small datasets and quick analysis",
+                description: "The tried-and-true method for quick incident response analysis. Excel is perfect when you need results in minutes and have relatively small datasets.",
+                applications: ["Pivot tables for top talkers", "VLOOKUP for reputation checks", "Conditional formatting for thresholds", "Quick charts for management"],
+                timeInvestment: "2-10 minutes",
+                skillLevel: "Beginner",
+                whenToUse: "Active incidents, small datasets (<10K rows), need results NOW",
+                category: "Basic Analysis"
+            },
+            {
+                key: "python_pandas",
+                text: "🐍 Python + Pandas",
+                color: "#27ae60",
+                borderColor: "#229954",
+                textColor: "#ffffff",
+                font: "bold 12px Segoe UI, sans-serif",
+                width: 140,
+                height: 45,
+                type: "technique",
+                tooltip: "Flexible analysis for medium datasets",
+                description: "More powerful than Excel, perfect for custom analysis and automation. Python gives you unlimited flexibility for complex data manipulation.",
+                applications: ["Custom aggregations and grouping", "Statistical analysis", "Data visualization", "Automated reporting"],
+                timeInvestment: "15-45 minutes",
+                skillLevel: "Intermediate",
+                whenToUse: "Medium datasets (10K-100K rows), need custom logic, want to save/reuse analysis",
+                category: "Programming"
+            },
+            {
+                key: "isolation_forest",
+                text: "🌲 Isolation Forest",
+                color: "#27ae60",
+                borderColor: "#229954",
+                textColor: "#ffffff",
+                font: "bold 12px Segoe UI, sans-serif",
+                width: 140,
+                height: 45,
+                type: "technique",
+                tooltip: "Excellent for detecting outliers and anomalies",
+                description: "Finds anomalies by isolating unusual data points. Great for unknown threats and discovering behavior that deviates from normal patterns.",
+                applications: ["Network traffic anomalies", "Unusual user behavior", "System performance outliers", "Zero-day threat detection"],
+                timeInvestment: "1-3 hours",
+                skillLevel: "Intermediate",
+                whenToUse: "Looking for unknown anomalies, large datasets, don't know what you're looking for",
+                category: "Anomaly Detection"
+            },
+            {
+                key: "clustering",
+                text: "🎯 Clustering (K-Means/DBSCAN)",
+                color: "#27ae60",
+                borderColor: "#229954",
+                textColor: "#ffffff",
+                font: "bold 12px Segoe UI, sans-serif",
+                width: 140,
+                height: 45,
+                type: "technique",
+                tooltip: "Group similar items to find patterns",
+                description: "Automatically groups similar items together to reveal hidden structure in your data. Perfect for organizing and understanding large datasets.",
+                applications: ["Malware family classification", "User behavior segmentation", "Attack campaign grouping", "Network device clustering"],
+                timeInvestment: "2-4 hours",
+                skillLevel: "Intermediate",
+                whenToUse: "Want to group similar items, discover categories, understand data structure",
+                category: "Clustering"
+            },
+            {
+                key: "supervised_ml",
+                text: "🎓 Supervised Machine Learning",
+                color: "#27ae60",
+                borderColor: "#229954",
+                textColor: "#ffffff",
+                font: "bold 12px Segoe UI, sans-serif",
+                width: 140,
+                height: 45,
+                type: "technique",
+                tooltip: "When you have examples to learn from",
+                description: "Train models on labeled examples to automatically classify new data. Requires historical data with known good/bad labels.",
+                applications: ["Malware detection", "Phishing email classification", "Alert prioritization", "Fraud detection"],
+                timeInvestment: "1-2 weeks setup",
+                skillLevel: "Advanced",
+                whenToUse: "Have labeled training data, want automation, need high accuracy",
+                category: "Machine Learning"
+            },
+            {
+                key: "unsupervised_ml",
+                text: "🔍 Unsupervised Machine Learning",
+                color: "#27ae60",
+                borderColor: "#229954",
+                textColor: "#ffffff",
+                font: "bold 12px Segoe UI, sans-serif",
+                width: 140,
+                height: 45,
+                type: "technique",
+                tooltip: "Discover patterns without examples",
+                description: "Find patterns and anomalies without needing labeled training data. Perfect for exploratory analysis and threat hunting.",
+                applications: ["Anomaly detection", "Pattern discovery", "Data exploration", "Behavioral analysis"],
+                timeInvestment: "2-5 days",
+                skillLevel: "Intermediate",
+                whenToUse: "No labeled data, exploring unknown patterns, threat hunting",
+                category: "Machine Learning"
+            },
+            {
+                key: "llms",
+                text: "🧠 Large Language Models",
+                color: "#27ae60",
+                borderColor: "#229954",
+                textColor: "#ffffff",
+                font: "bold 12px Segoe UI, sans-serif",
+                width: 140,
+                height: 45,
+                type: "technique",
+                tooltip: "Advanced text understanding and reasoning",
+                description: "AI models that can understand and analyze human language in security contexts. Perfect for analyzing unstructured text data.",
+                applications: ["Security log interpretation", "Incident report summarization", "Policy analysis", "Threat intelligence extraction"],
+                timeInvestment: "1-3 days",
+                skillLevel: "Intermediate",
+                whenToUse: "Analyzing text data, need natural language understanding, complex reasoning required",
+                category: "Natural Language Processing"
+            },
+            {
+                key: "graph_analytics",
+                text: "🕸️ Graph Analytics",
+                color: "#27ae60",
+                borderColor: "#229954",
+                textColor: "#ffffff",
+                font: "bold 12px Segoe UI, sans-serif",
+                width: 140,
+                height: 45,
+                type: "technique",
+                tooltip: "Network analysis and relationship mapping",
+                description: "Analyze connections and relationships between entities like IPs, domains, and users. Perfect for understanding attack infrastructure.",
+                applications: ["Threat actor network mapping", "Attack path analysis", "Infrastructure clustering", "Social network analysis"],
+                timeInvestment: "2-4 weeks",
+                skillLevel: "Advanced",
+                whenToUse: "Data has relationships/connections, need to understand network structure, mapping attack infrastructure",
+                category: "Network Analysis"
+            }
+        ];
+
+        // Link data
+        const linkDataArray = [
+            // Center to goals
+            {from: "center", to: "quick_response", color: "#ecf0f1", width: 3},
+            {from: "center", to: "pattern_discovery", color: "#ecf0f1", width: 3},
+            {from: "center", to: "auto_classify", color: "#ecf0f1", width: 3},
+            {from: "center", to: "text_analysis", color: "#ecf0f1", width: 3},
+            {from: "center", to: "relationship_mapping", color: "#ecf0f1", width: 3},
+
+            // Goals to decisions
+            {from: "quick_response", to: "data_size_decision", color: "#bdc3c7", width: 2},
+            {from: "pattern_discovery", to: "pattern_type_decision", color: "#bdc3c7", width: 2},
+            {from: "auto_classify", to: "labels_decision", color: "#bdc3c7", width: 2},
+
+            // Direct goal to technique connections
+            {from: "text_analysis", to: "llms", color: "#bdc3c7", width: 2},
+            {from: "relationship_mapping", to: "graph_analytics", color: "#bdc3c7", width: 2},
+
+            // Decisions to techniques
+            {from: "data_size_decision", to: "excel", color: "#95a5a6", width: 2, label: "Small Data\n(<10K rows)"},
+            {from: "data_size_decision", to: "python_pandas", color: "#95a5a6", width: 2, label: "Medium Data\n(10K-100K rows)"},
+            
+            {from: "pattern_type_decision", to: "isolation_forest", color: "#95a5a6", width: 2, label: "Outliers &\nAnomalies"},
+            {from: "pattern_type_decision", to: "clustering", color: "#95a5a6", width: 2, label: "Hidden\nGroups"},
+            
+            {from: "labels_decision", to: "supervised_ml", color: "#95a5a6", width: 2, label: "Yes - Have\nExamples"},
+            {from: "labels_decision", to: "unsupervised_ml", color: "#95a5a6", width: 2, label: "No - Discover\nCategories"}
+        ];
+
+        // Set the model
+        diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
+        // Function to show node details in info panel
+        function showNodeDetails(nodeData) {
+            const infoPanel = document.getElementById('info-panel');
+            
+            let content = `<h3>${nodeData.text.replace(/🎯|🚨|🔍|🤖|📝|🕸️|📊|🏷️|🐍|🌲|🎓|🧠/g, '')} <span class="type-badge">${nodeData.category}</span></h3>`;
+            
+            content += `<p><strong>Description:</strong> ${nodeData.description}</p>`;
+            
+            if (nodeData.applications) {
+                content += `<h4>🎯 Applications:</h4><ul>`;
+                nodeData.applications.forEach(app => {
+                    content += `<li>${app}</li>`;
+                });
+                content += `</ul>`;
+            }
+            
+            if (nodeData.timeInvestment) {
+                content += `<p><span class="time-badge">⏱️ ${nodeData.timeInvestment}</span></p>`;
+            }
+            
+            if (nodeData.skillLevel) {
+                content += `<p><span class="skill-badge">📚 ${nodeData.skillLevel}</span></p>`;
+            }
+            
+            if (nodeData.whenToUse) {
+                content += `<h4>💡 When to use:</h4><p>${nodeData.whenToUse}</p>`;
+            }
+
+            // Show path from center
+            if (nodeData.key !== 'center') {
+                const path = findPathFromCenter(nodeData.key);
+                if (path.length > 1) {
+                    content += `<div class="path-highlight"><h4>🛤️ Path from start:</h4>`;
+                    content += path.map(key => {
+                        const node = nodeDataArray.find(n => n.key === key);
+                        return node ? node.text.replace(/🎯|🚨|🔍|🤖|📝|🕸️|📊|🏷️|🐍|🌲|🎓|🧠/g, '').trim() : key;
+                    }).join(' → ');
+                    content += `</div>`;
+                }
+            }
+
+            infoPanel.innerHTML = content;
+        }
+
+        // Function to find path from center to a node
+        function findPathFromCenter(targetKey) {
+            const visited = new Set();
+            const path = [];
+
+            function dfs(currentKey, currentPath) {
+                if (visited.has(currentKey)) return false;
+                visited.add(currentKey);
+                currentPath.push(currentKey);
+
+                if (currentKey === targetKey) {
+                    path.push(...currentPath);
+                    return true;
+                }
+
+                // Find connected nodes
+                const connections = linkDataArray.filter(link => link.from === currentKey);
+                for (const connection of connections) {
+                    if (dfs(connection.to, [...currentPath])) {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            dfs('center', []);
+            return path;
+        }
+
+        // Function to highlight connected nodes
+        function highlightConnectedNodes(node, highlight) {
+            const key = node.data.key;
+            
+            // Highlight connected links
+            diagram.links.each(link => {
+                if (link.data.from === key || link.data.to === key) {
+                    const shape = link.findObject("Shape");
+                    if (shape) {
+                        if (highlight) {
+                            shape.stroke = "#f39c12";
+                            shape.strokeWidth = 4;
+                        } else {
+                            shape.stroke = link.data.color;
+                            shape.strokeWidth = link.data.width;
+                        }
+                    }
+                }
+            });
+
+            // Highlight connected nodes
+            diagram.nodes.each(connectedNode => {
+                const connectedKey = connectedNode.data.key;
+                const isConnected = linkDataArray.some(link => 
+                    (link.from === key && link.to === connectedKey) ||
+                    (link.to === key && link.from === connectedKey)
+                );
+                
+                if (isConnected && connectedKey !== key) {
+                    const shape = connectedNode.findObject("Shape");
+                    if (shape) {
+                        if (highlight) {
+                            shape.stroke = "#f39c12";
+                            shape.strokeWidth = 4;
+                        } else {
+                            shape.stroke = connectedNode.data.borderColor;
+                            shape.strokeWidth = 3;
+                        }
+                    }
+                }
+            });
+        }
+
+        // Control button event handlers
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            diagram.zoomToFit();
+            diagram.centerRect(diagram.documentBounds);
+        });
+
+        document.getElementById('center-btn').addEventListener('click', function() {
+            const centerNode = diagram.findNodeForKey('center');
+            if (centerNode) {
+                diagram.centerRect(centerNode.actualBounds);
+                diagram.scale = 1.0;
+            }
+        });
+
+        document.getElementById('expand-btn').addEventListener('click', function() {
+            // Show all technique nodes
+            const techniqueNodes = nodeDataArray.filter(node => node.type === 'technique');
+            let content = '<h3>🛠️ All Available Techniques</h3>';
+            
+            techniqueNodes.forEach(node => {
+                content += `<div style="margin-bottom: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 8px;">`;
+                content += `<strong>${node.text.replace(/🐍|🌲|🎓|🔍|🧠|🕸️|📊/g, '').trim()}</strong><br>`;
+                content += `<small>${node.description}</small><br>`;
+                content += `<span class="time-badge">${node.timeInvestment}</span> `;
+                content += `<span class="skill-badge">${node.skillLevel}</span>`;
+                content += `</div>`;
+            });
+            
+            document.getElementById('info-panel').innerHTML = content;
+        });
+
+        document.getElementById('highlight-btn').addEventListener('click', function() {
+            // Highlight a sample path
+            const samplePath = ['center', 'quick_response', 'data_size_decision', 'excel'];
+            
+            diagram.clearHighlighteds();
+            samplePath.forEach(key => {
+                const node = diagram.findNodeForKey(key);
+                if (node) {
+                    node.isHighlighted = true;
+                }
+            });
+
+            // Show path info
+            let content = '<h3>🛤️ Sample Decision Path</h3>';
+            content += '<div class="path-highlight">';
+            content += '<p><strong>Example: Quick incident response with small dataset</strong></p>';
+            content += '<ol>';
+            content += '<li>🎯 I would like to... (Start)</li>';
+            content += '<li>🚨 Quick Incident Response (Goal)</li>';
+            content += '<li>📊 What\'s your data size? (Decision)</li>';
+            content += '<li>📊 Excel/Google Sheets (Technique)</li>';
+            content += '</ol>';
+            content += '<p><em>This path is perfect when you have a security incident happening right now and need to analyze a small dataset quickly using familiar tools.</em></p>';
+            content += '</div>';
+            
+            document.getElementById('info-panel').innerHTML = content;
+        });
+
+        document.getElementById('layout-btn').addEventListener('click', function() {
+            diagram.layoutDiagram(true);
+        });
+
+        // Initialize with center node info
+        diagram.addDiagramListener("InitialLayoutCompleted", function() {
+            const centerNode = diagram.findNodeForKey('center');
+            if (centerNode) {
+                showNodeDetails(centerNode.data);
+            }
+        });
+
+        // Handle selection changes
+        diagram.addDiagramListener("ChangedSelection", function() {
+            const selectedNode = diagram.selection.first();
+            if (selectedNode && selectedNode.data) {
+                showNodeDetails(selectedNode.data);
+            }
+        });
+
+        // Set initial layout and center the diagram
+        setTimeout(() => {
+            diagram.zoomToFit();
+            diagram.centerRect(diagram.documentBounds);
+        }, 500);
+    </script>
+</body>
+</html>
