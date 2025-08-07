@@ -10,7 +10,7 @@ def run():
     """
     Run the crew.
     """
-    inputs = {"topic": "<OpenAI agents>"}
+    inputs = {"topic": "<Insert topic here>"}
 
     try:
         Ti().crew().kickoff(inputs=inputs)
