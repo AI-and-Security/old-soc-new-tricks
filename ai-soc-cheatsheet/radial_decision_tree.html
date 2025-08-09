@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1600px;
+            max-width: 2000px;
             margin: 0 auto;
             background: #34495e;
             border-radius: 20px;
@@ -71,10 +71,10 @@
             background: #3498db;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             transition: all 0.3s;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -93,7 +93,7 @@
 
         #diagram-container {
             width: 100%;
-            height: 700px;
+            height: 1000px;
             background: #1a252f;
             border-radius: 15px;
             border: 2px solid rgba(255,255,255,0.2);
@@ -102,15 +102,15 @@
         }
 
         .info-panel {
-            width: 350px;
+            width: 400px;
             background: rgba(26, 37, 47, 0.95);
             color: #ecf0f1;
             padding: 25px;
             border-radius: 15px;
-            font-size: 14px;
+            font-size: 15px;
             border: 2px solid rgba(255,255,255,0.2);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            max-height: 700px;
+            max-height: 1000px;
             overflow-y: auto;
         }
 
@@ -118,7 +118,7 @@
             color: #fff;
             margin-top: 0;
             margin-bottom: 15px;
-            font-size: 18px;
+            font-size: 20px;
             border-bottom: 2px solid rgba(255,255,255,0.2);
             padding-bottom: 10px;
         }
@@ -127,7 +127,7 @@
             color: #3498db;
             margin-top: 20px;
             margin-bottom: 10px;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .info-panel ul {
@@ -142,9 +142,9 @@
 
         .badge {
             display: inline-block;
-            padding: 4px 10px;
+            padding: 6px 12px;
             border-radius: 15px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
             margin: 3px;
         }
@@ -177,26 +177,26 @@
             align-items: center;
             gap: 10px;
             background: rgba(255,255,255,0.1);
-            padding: 8px 15px;
+            padding: 10px 18px;
             border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.2);
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .legend-shape {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             border: 2px solid rgba(255,255,255,0.3);
         }
 
         .instructions {
             background: rgba(255,255,255,0.1);
-            padding: 15px;
+            padding: 18px;
             border-radius: 10px;
             margin-bottom: 20px;
             border-left: 4px solid #3498db;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.5;
         }
 
@@ -204,7 +204,7 @@
             background: linear-gradient(45deg, rgba(52, 152, 219, 0.2), rgba(155, 89, 182, 0.2));
             border: 1px solid rgba(52, 152, 219, 0.5);
             border-radius: 5px;
-            padding: 8px;
+            padding: 12px;
             margin: 10px 0;
         }
     </style>
@@ -283,8 +283,8 @@
             "undoManager.isEnabled": true,
             layout: $(go.ForceDirectedLayout, {
                 maxIterations: 200,
-                defaultSpringLength: 150,
-                defaultElectricalCharge: 200,
+                defaultSpringLength: 300,
+                defaultElectricalCharge: 400,
                 epsilonDistance: 1
             }),
             "toolManager.hoverDelay": 100,
@@ -296,8 +296,8 @@
             {
                 locationSpot: go.Spot.Center,
                 isShadowed: true,
-                shadowOffset: new go.Point(3, 3),
-                shadowColor: "rgba(0,0,0,0.3)"
+                shadowOffset: new go.Point(4, 4),
+                shadowColor: "rgba(0,0,0,0.4)"
             },
             new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
             
@@ -313,13 +313,13 @@
             
             // Node text
             $(go.TextBlock, {
-                margin: 12,
-                font: "bold 12px Segoe UI, sans-serif",
+                margin: 20,
+                font: "bold 16px Segoe UI, sans-serif",
                 stroke: "#ffffff",
                 textAlign: "center",
                 verticalAlignment: go.Spot.Center,
                 wrap: go.TextBlock.WrapFit,
-                maxLines: 3
+                maxLines: 5
             },
             new go.Binding("text", "text"),
             new go.Binding("font", "font"),
@@ -329,9 +329,9 @@
             {
                 toolTip: $("ToolTip",
                     $(go.TextBlock, {
-                        margin: 8,
-                        font: "12px Segoe UI, sans-serif",
-                        maxSize: new go.Size(300, NaN),
+                        margin: 10,
+                        font: "14px Segoe UI, sans-serif",
+                        maxSize: new go.Size(350, NaN),
                         wrap: go.TextBlock.WrapFit
                     },
                     new go.Binding("text", "tooltip"))
@@ -372,7 +372,7 @@
             new go.Binding("points").makeTwoWay(),
             
             $(go.Shape, {
-                strokeWidth: 3,
+                strokeWidth: 4,
                 stroke: "rgba(236, 240, 241, 0.6)"
             },
             new go.Binding("stroke", "color"),
@@ -382,50 +382,50 @@
                 toArrow: "Standard",
                 fill: "rgba(236, 240, 241, 0.8)",
                 stroke: null,
-                scale: 1.2
+                scale: 1.4
             },
             new go.Binding("fill", "color")),
             
-            // Link labels
+            // Link labels - much larger text
             $(go.TextBlock, {
-                segmentOffset: new go.Point(0, -12),
+                segmentOffset: new go.Point(0, -20),
                 segmentOrientation: go.Link.OrientUpright,
-                font: "10px Segoe UI, sans-serif",
-                stroke: "#ecf0f1",
-                background: "rgba(52, 73, 94, 0.8)",
-                margin: 4
+                font: "bold 20px Segoe UI, sans-serif",
+                stroke: "#ffffff",
+                background: "rgba(52, 73, 94, 0.95)",
+                margin: 8
             },
             new go.Binding("text", "label"))
         );
 
-        // Node data
+        // Node data with much larger sizes and bigger fonts
         const nodeDataArray = [
-            // Center node
+            // Center node - dramatically larger
             {
                 key: "center",
                 text: "🎯 I would like to...",
                 color: "#e74c3c",
                 borderColor: "#c0392b",
                 textColor: "#ffffff",
-                font: "bold 16px Segoe UI, sans-serif",
-                width: 180,
-                height: 60,
+                font: "bold 26px Segoe UI, sans-serif",
+                width: 320,
+                height: 100,
                 type: "center",
                 tooltip: "Start here! Choose your security analysis goal.",
                 description: "This is your starting point for choosing the right AI/ML technique for security analysis. Each connected node represents a different goal or approach you might want to take.",
                 category: "Starting Point"
             },
             
-            // Primary goals
+            // Primary goals - much larger boxes
             {
                 key: "quick_response",
                 text: "🚨 Quick Incident Response",
                 color: "#3498db",
                 borderColor: "#2980b9",
                 textColor: "#ffffff",
-                font: "bold 13px Segoe UI, sans-serif",
-                width: 150,
-                height: 50,
+                font: "bold 20px Segoe UI, sans-serif",
+                width: 280,
+                height: 90,
                 type: "goal",
                 tooltip: "Get fast answers during active security incidents",
                 description: "When the SOC is on fire and you need actionable intelligence in minutes, not hours. Perfect for active incident response scenarios.",
@@ -439,9 +439,9 @@
                 color: "#3498db",
                 borderColor: "#2980b9",
                 textColor: "#ffffff",
-                font: "bold 13px Segoe UI, sans-serif",
-                width: 150,
-                height: 50,
+                font: "bold 20px Segoe UI, sans-serif",
+                width: 280,
+                height: 90,
                 type: "goal",
                 tooltip: "Find hidden patterns and anomalies in your data",
                 description: "Perfect for threat hunting and discovering new attack patterns you didn't know existed. Use when you suspect something is wrong but don't know what.",
@@ -455,9 +455,9 @@
                 color: "#3498db",
                 borderColor: "#2980b9",
                 textColor: "#ffffff",
-                font: "bold 13px Segoe UI, sans-serif",
-                width: 150,
-                height: 50,
+                font: "bold 20px Segoe UI, sans-serif",
+                width: 280,
+                height: 90,
                 type: "goal",
                 tooltip: "Automatically classify threats and events",
                 description: "Build systems that can automatically identify malware, phishing, or other security threats without human intervention.",
@@ -471,9 +471,9 @@
                 color: "#3498db",
                 borderColor: "#2980b9",
                 textColor: "#ffffff",
-                font: "bold 13px Segoe UI, sans-serif",
-                width: 150,
-                height: 50,
+                font: "bold 20px Segoe UI, sans-serif",
+                width: 280,
+                height: 90,
                 type: "goal",
                 tooltip: "Analyze unstructured text and log data",
                 description: "Extract insights from security logs, incident reports, and other text-based security data using natural language processing.",
@@ -487,9 +487,9 @@
                 color: "#3498db",
                 borderColor: "#2980b9",
                 textColor: "#ffffff",
-                font: "bold 13px Segoe UI, sans-serif",
-                width: 150,
-                height: 50,
+                font: "bold 20px Segoe UI, sans-serif",
+                width: 280,
+                height: 90,
                 type: "goal",
                 tooltip: "Understand how entities are connected",
                 description: "Analyze networks of attackers, infrastructure, and attack paths to understand threat landscapes and identify key nodes.",
@@ -498,16 +498,16 @@
                 category: "Network Analysis"
             },
             
-            // Decision nodes
+            // Decision nodes - much larger
             {
                 key: "data_size_decision",
                 text: "📊 What's your data size?",
                 color: "#f39c12",
                 borderColor: "#e67e22",
                 textColor: "#ffffff",
-                font: "bold 12px Segoe UI, sans-serif",
-                width: 130,
-                height: 45,
+                font: "bold 18px Segoe UI, sans-serif",
+                width: 300,
+                height: 80,
                 type: "decision",
                 tooltip: "Choose approach based on dataset size",
                 description: "The size of your dataset determines which tools and techniques will be most effective. Smaller datasets work great with Excel, while larger ones need more powerful tools.",
@@ -519,9 +519,9 @@
                 color: "#f39c12",
                 borderColor: "#e67e22",
                 textColor: "#ffffff",
-                font: "bold 12px Segoe UI, sans-serif",
-                width: 130,
-                height: 45,
+                font: "bold 18px Segoe UI, sans-serif",
+                width: 300,
+                height: 80,
                 type: "decision",
                 tooltip: "Different techniques for different pattern types",
                 description: "Different types of patterns require different analytical approaches. Outliers need different techniques than hidden groups or complex behaviors.",
@@ -533,25 +533,25 @@
                 color: "#f39c12",
                 borderColor: "#e67e22",
                 textColor: "#ffffff",
-                font: "bold 12px Segoe UI, sans-serif",
-                width: 130,
-                height: 45,
+                font: "bold 18px Segoe UI, sans-serif",
+                width: 300,
+                height: 80,
                 type: "decision",
                 tooltip: "Supervised vs Unsupervised approaches",
                 description: "Whether you have labeled training data determines if you can use supervised learning (with examples) or need unsupervised learning (discover patterns).",
                 category: "Decision Point"
             },
             
-            // Technique nodes
+            // Technique nodes - dramatically larger
             {
                 key: "excel",
                 text: "📊 Excel/Google Sheets",
                 color: "#27ae60",
                 borderColor: "#229954",
                 textColor: "#ffffff",
-                font: "bold 12px Segoe UI, sans-serif",
-                width: 140,
-                height: 45,
+                font: "bold 18px Segoe UI, sans-serif",
+                width: 300,
+                height: 80,
                 type: "technique",
                 tooltip: "Perfect for small datasets and quick analysis",
                 description: "The tried-and-true method for quick incident response analysis. Excel is perfect when you need results in minutes and have relatively small datasets.",
@@ -567,16 +567,16 @@
                 color: "#27ae60",
                 borderColor: "#229954",
                 textColor: "#ffffff",
-                font: "bold 12px Segoe UI, sans-serif",
-                width: 140,
-                height: 45,
+                font: "bold 18px Segoe UI, sans-serif",
+                width: 300,
+                height: 80,
                 type: "technique",
                 tooltip: "Flexible analysis for medium datasets",
                 description: "More powerful than Excel, perfect for custom analysis and automation. Python gives you unlimited flexibility for complex data manipulation.",
                 applications: ["Custom aggregations and grouping", "Statistical analysis", "Data visualization", "Automated reporting"],
                 timeInvestment: "15-45 minutes",
                 skillLevel: "Intermediate",
-                whenToUse: "Medium datasets (10K-100K rows), need custom logic, want to save/reuse analysis",
+                whenToUse: "Medium datasets, need custom logic, want to save/reuse analysis",
                 category: "Programming"
             },
             {
@@ -585,9 +585,9 @@
                 color: "#27ae60",
                 borderColor: "#229954",
                 textColor: "#ffffff",
-                font: "bold 12px Segoe UI, sans-serif",
-                width: 140,
-                height: 45,
+                font: "bold 18px Segoe UI, sans-serif",
+                width: 300,
+                height: 80,
                 type: "technique",
                 tooltip: "Excellent for detecting outliers and anomalies",
                 description: "Finds anomalies by isolating unusual data points. Great for unknown threats and discovering behavior that deviates from normal patterns.",
@@ -603,9 +603,9 @@
                 color: "#27ae60",
                 borderColor: "#229954",
                 textColor: "#ffffff",
-                font: "bold 12px Segoe UI, sans-serif",
-                width: 140,
-                height: 45,
+                font: "bold 18px Segoe UI, sans-serif",
+                width: 300,
+                height: 80,
                 type: "technique",
                 tooltip: "Group similar items to find patterns",
                 description: "Automatically groups similar items together to reveal hidden structure in your data. Perfect for organizing and understanding large datasets.",
@@ -621,9 +621,9 @@
                 color: "#27ae60",
                 borderColor: "#229954",
                 textColor: "#ffffff",
-                font: "bold 12px Segoe UI, sans-serif",
-                width: 140,
-                height: 45,
+                font: "bold 18px Segoe UI, sans-serif",
+                width: 300,
+                height: 80,
                 type: "technique",
                 tooltip: "When you have examples to learn from",
                 description: "Train models on labeled examples to automatically classify new data. Requires historical data with known good/bad labels.",
@@ -639,9 +639,9 @@
                 color: "#27ae60",
                 borderColor: "#229954",
                 textColor: "#ffffff",
-                font: "bold 12px Segoe UI, sans-serif",
-                width: 140,
-                height: 45,
+                font: "bold 18px Segoe UI, sans-serif",
+                width: 300,
+                height: 80,
                 type: "technique",
                 tooltip: "Discover patterns without examples",
                 description: "Find patterns and anomalies without needing labeled training data. Perfect for exploratory analysis and threat hunting.",
@@ -657,9 +657,9 @@
                 color: "#27ae60",
                 borderColor: "#229954",
                 textColor: "#ffffff",
-                font: "bold 12px Segoe UI, sans-serif",
-                width: 140,
-                height: 45,
+                font: "bold 18px Segoe UI, sans-serif",
+                width: 300,
+                height: 80,
                 type: "technique",
                 tooltip: "Advanced text understanding and reasoning",
                 description: "AI models that can understand and analyze human language in security contexts. Perfect for analyzing unstructured text data.",
@@ -675,9 +675,9 @@
                 color: "#27ae60",
                 borderColor: "#229954",
                 textColor: "#ffffff",
-                font: "bold 12px Segoe UI, sans-serif",
-                width: 140,
-                height: 45,
+                font: "bold 18px Segoe UI, sans-serif",
+                width: 300,
+                height: 80,
                 type: "technique",
                 tooltip: "Network analysis and relationship mapping",
                 description: "Analyze connections and relationships between entities like IPs, domains, and users. Perfect for understanding attack infrastructure.",
@@ -692,30 +692,30 @@
         // Link data
         const linkDataArray = [
             // Center to goals
-            {from: "center", to: "quick_response", color: "#ecf0f1", width: 3},
-            {from: "center", to: "pattern_discovery", color: "#ecf0f1", width: 3},
-            {from: "center", to: "auto_classify", color: "#ecf0f1", width: 3},
-            {from: "center", to: "text_analysis", color: "#ecf0f1", width: 3},
-            {from: "center", to: "relationship_mapping", color: "#ecf0f1", width: 3},
+            {from: "center", to: "quick_response", color: "#ecf0f1", width: 5},
+            {from: "center", to: "pattern_discovery", color: "#ecf0f1", width: 5},
+            {from: "center", to: "auto_classify", color: "#ecf0f1", width: 5},
+            {from: "center", to: "text_analysis", color: "#ecf0f1", width: 5},
+            {from: "center", to: "relationship_mapping", color: "#ecf0f1", width: 5},
 
             // Goals to decisions
-            {from: "quick_response", to: "data_size_decision", color: "#bdc3c7", width: 2},
-            {from: "pattern_discovery", to: "pattern_type_decision", color: "#bdc3c7", width: 2},
-            {from: "auto_classify", to: "labels_decision", color: "#bdc3c7", width: 2},
+            {from: "quick_response", to: "data_size_decision", color: "#bdc3c7", width: 5},
+            {from: "pattern_discovery", to: "pattern_type_decision", color: "#bdc3c7", width: 5},
+            {from: "auto_classify", to: "labels_decision", color: "#bdc3c7", width: 5},
 
             // Direct goal to technique connections
-            {from: "text_analysis", to: "llms", color: "#bdc3c7", width: 2},
-            {from: "relationship_mapping", to: "graph_analytics", color: "#bdc3c7", width: 2},
+            {from: "text_analysis", to: "llms", color: "#bdc3c7", width: 5},
+            {from: "relationship_mapping", to: "graph_analytics", color: "#bdc3c7", width: 5},
 
             // Decisions to techniques
-            {from: "data_size_decision", to: "excel", color: "#95a5a6", width: 2, label: "Small Data\n(<10K rows)"},
-            {from: "data_size_decision", to: "python_pandas", color: "#95a5a6", width: 2, label: "Medium Data\n(10K-100K rows)"},
+            {from: "data_size_decision", to: "excel", color: "#95a5a6", width: 5, label: "Small Data"},
+            {from: "data_size_decision", to: "python_pandas", color: "#95a5a6", width: 5, label: "Medium Data"},
             
-            {from: "pattern_type_decision", to: "isolation_forest", color: "#95a5a6", width: 2, label: "Outliers &\nAnomalies"},
-            {from: "pattern_type_decision", to: "clustering", color: "#95a5a6", width: 2, label: "Hidden\nGroups"},
+            {from: "pattern_type_decision", to: "isolation_forest", color: "#95a5a6", width: 5, label: "Outliers &\nAnomalies"},
+            {from: "pattern_type_decision", to: "clustering", color: "#95a5a6", width: 5, label: "Hidden\nGroups"},
             
-            {from: "labels_decision", to: "supervised_ml", color: "#95a5a6", width: 2, label: "Yes - Have\nExamples"},
-            {from: "labels_decision", to: "unsupervised_ml", color: "#95a5a6", width: 2, label: "No - Discover\nCategories"}
+            {from: "labels_decision", to: "supervised_ml", color: "#95a5a6", width: 5, label: "Yes - Have\nExamples"},
+            {from: "labels_decision", to: "unsupervised_ml", color: "#95a5a6", width: 5, label: "No - Discover\nCategories"}
         ];
 
         // Set the model
@@ -806,7 +806,7 @@
                     if (shape) {
                         if (highlight) {
                             shape.stroke = "#f39c12";
-                            shape.strokeWidth = 4;
+                            shape.strokeWidth = 6;
                         } else {
                             shape.stroke = link.data.color;
                             shape.strokeWidth = link.data.width;
@@ -828,7 +828,7 @@
                     if (shape) {
                         if (highlight) {
                             shape.stroke = "#f39c12";
-                            shape.strokeWidth = 4;
+                            shape.strokeWidth = 5;
                         } else {
                             shape.stroke = connectedNode.data.borderColor;
                             shape.strokeWidth = 3;
@@ -858,7 +858,7 @@
             let content = '<h3>🛠️ All Available Techniques</h3>';
             
             techniqueNodes.forEach(node => {
-                content += `<div style="margin-bottom: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 8px;">`;
+                content += `<div style="margin-bottom: 15px; padding: 12px; background: rgba(255,255,255,0.1); border-radius: 8px;">`;
                 content += `<strong>${node.text.replace(/🐍|🌲|🎓|🔍|🧠|🕸️|📊/g, '').trim()}</strong><br>`;
                 content += `<small>${node.description}</small><br>`;
                 content += `<span class="time-badge">${node.timeInvestment}</span> `;
