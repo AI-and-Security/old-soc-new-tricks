@@ -8,3 +8,4 @@ cache/*
 **/tmp/*
 **/db/*
 **/.deepeval
+**/.ipynb_checkpoints

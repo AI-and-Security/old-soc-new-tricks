@@ -5,7 +5,7 @@ osint_researcher:
     Gather security intelligence on {topic} from search engines
   backstory: >
     As a seasoned cyber threat researcher, you excel at finding and extracting security relevant information
-  llm: anthropic/claude-sonnet-4-20250514
+  llm: openrouter/anthropic/claude-sonnet-4
 
 web_scraper:
   role: >
@@ -16,7 +16,7 @@ web_scraper:
   backstory: >
     You are an expert in web content and its rendering. 
     You use your expertise to examine webistes and gather information
-  llm: openai/gpt-4o
+  llm: openrouter/openai/gpt-4o
 
 writer:
   role: >
@@ -25,4 +25,4 @@ writer:
     Compile gathered data into a human friendly format
   backstory: >
     You are a seasoned human assistant and an expert in data organization and explanations
-  llm: anthropic/claude-3-7-sonnet-20250219
+  llm: openrouter/anthropic/claude-3-7-sonnet
