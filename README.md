@@ -25,9 +25,12 @@ ANTHROPIC_API_KEY=YOUR_KEY_HERE
 | Notebook | Description | Colab |
 |----------|-------------|-------|
 | `test` | Test notebook | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/test.ipynb) |
-| `Module1` | Old School is Cool! | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/ai_python.ipynb) |
-| `Module2` | To GenAI or Not! | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/ml_genai.ipynb) |
-| `Module3` | Upskilling the LLMs | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/eda_langchain.ipynb) |
+| `Exercise 1` | Foundations are important | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/asm_explorer.ipynb) |
+| `Exercise 2` | Old School is Cool! | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/ai_python.ipynb) |
+| `Exercise 3` | To GenAI or Not! | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/ml_genai.ipynb) |
+| `Exercise 4` | Research: Push the envelope with LLMs | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/eda_langchain.ipynb) |
+| `Exercise 5` | Signals for CoPilot | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/guided_response.ipynb) |
+| `Exercise 6` | Basic Threat Intel Agent | [Code Directory](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/ti) |
 
 
 ## 💻 Local Environment Setup
