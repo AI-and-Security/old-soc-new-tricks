@@ -30,7 +30,8 @@ ANTHROPIC_API_KEY=YOUR_KEY_HERE
 | `Exercise 3` | To GenAI or Not! | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/ml_genai.ipynb) |
 | `Exercise 4` | Research: Push the envelope with LLMs | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/eda_langchain.ipynb) |
 | `Exercise 5` | Signals for CoPilot | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/notebooks/guided_response.ipynb) |
-| `Exercise 6` | Basic Threat Intel Agent | [Code Directory](https://colab.research.google.com/github/AI-and-Security/old-soc-new-tricks/blob/main/ti) |
+| `Exercise 6` | Basic Threat Intel Agent | [Code Directory](https://github.com/AI-and-Security/old-soc-new-tricks/tree/main/ti) |
+| `Exercise 7` | Agentic Analyst | [Code Directory](https://github.com/AI-and-Security/old-soc-new-tricks/blob/aiv/notebooks/agentic_workflows.ipynb) |
 
 
 ## 💻 Local Environment Setup

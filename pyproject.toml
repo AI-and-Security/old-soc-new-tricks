@@ -3,7 +3,7 @@ name = "old-soc-new-tricks"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 dependencies = [
     "deepeval>=3.3.5",
     "dotenv>=0.9.9",
@@ -11,6 +11,7 @@ dependencies = [
     "jinja2>=3.1.6",
     "langchain>=0.3.27",
     "langchain-openai>=0.3.28",
+    "langgraph>=1.0.0",
     "matplotlib>=3.10.5",
     "missingno>=0.5.2",
     "pandas>=2.3.1",
