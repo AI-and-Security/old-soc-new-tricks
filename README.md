@@ -38,7 +38,8 @@ The authors have tested this in the following environments
 
 2. Inside the repository, execute this command `uv run test.py` to test your execution environment. The output is self-explanatory. This should automatically create a virtual environment (`.venv`) and install dependencies in the repo folder. Alternativly, running `uv sync` will create a virtual environment and install dependencies in the repo folder. 
  
-3. In your favorite IDE, navigate to repository/notebooks and click on test.ipynb. Install Jupyter and Python extensions if not already installed to run jupyter notebook. 
+3. In your favorite IDE, navigate to repository/notebooks and click on test.ipynb. 
+- Install Jupyter and Python extensions if not already installed to run jupyter notebook. Use the Jupyter extension from Microsoft
 - Select your environment for the notebook (This should be the `.venv` folder that is created in repository directory). Refer to your IDE docs/favorite AI assistant to understand how to provide an existing environment for jupyter notebooks. 
 - VS Code and its derivatives will prompt you to select a kernel and provide choices. By default, it should look in the current directory and present .venv as an option
 - Execute the first cell to test the environment for notebook execution. The output is self-explanatory
