@@ -1,0 +1,12 @@
+services:
+  workshop:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/workspace
+    env_file:
+      - notebooks/.env
+      - ti/.env
+    environment:
+      JUPYTER_TOKEN: ${JUPYTER_TOKEN:-workshop}
